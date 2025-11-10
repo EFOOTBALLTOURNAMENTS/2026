@@ -9,55 +9,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EFC BY SANA ULLAH</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        // Custom Tailwind config for Premier League colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pl-dark': '#37003C', // PL Primary Dark Purple (Body Background)
+                        'pl-card': '#1a0d1e', // Very Dark Card Background
+                        'pl-accent': '#652d91', // A medium purple for highlights
+                        'pl-text': '#f4f4f4', // Off-white text
+                        'pl-highlight': '#982b8b', // Vibrant pink/purple for active tabs/buttons/accents
+                        'pl-header-bar': '#5b1d5c', // Header/Table Bar Gradient Look
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        body { font-family: 'Inter', sans-serif;
- }
-        .custom-scrollbar::-webkit-scrollbar { width: 8px;
- }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #3b82f6; border-radius: 4px;
- }
-        .custom-scrollbar::-webkit-scrollbar-track { background-color: #e5e7eb;
- }
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #982b8b; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background-color: #1a0d1e; }
  
         .tab-button {
             transition: all 0.3s ease;
- cursor: pointer;
+            cursor: pointer;
         }
 
-        /* --- NEW SPLASH SCREEN STYLE --- */
+        /* --- STYLES TO ENSURE ALL HEADERS ARE WHITE --- */
+        .tab-pane h2, .tab-pane h3, .tab-pane h4 {
+            /* This ensures any text inside the headers remains white for contrast */
+            color: white !important;
+        }
+
+        /* --- NEW STYLES FOR MAIN HEADER BACKGROUND --- */
+        .custom-header-bg {
+            background-image: url('https://i.postimg.cc/zGKLCjcD/Screenshot-20251110-193550-2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-color: #37003C; /* Fallback */
+            border-bottom: 2px solid #982b8b;
+        }
+        
+        /* --- NEW CLASS FOR SECTION HEADERS (H2, H3, H4) --- */
+        .section-header-bg {
+            background-image: url('https://i.postimg.cc/zGKLCjcD/Screenshot-20251110-193550-2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-color: #37003C; /* Fallback */
+            border-bottom: 2px solid #982b8b;
+        }
+
+
+        /* --- SPLASH SCREEN STYLE --- */
         .el-clasico-bg {
-            /* !!!
- IMPORTANT: REPLACE THIS URL WITH YOUR EL CLASICO BANNER IMAGE URL !!!
- */
+            /* IMPORTANT: THIS IS THE BANNER IMAGE FROM THE PREVIOUS REQUEST */
             background-image: url('https://i.postimg.cc/6qGS3F6v/images-3-1.jpg');
             background-size: cover;
- /* Ensures the image covers the entire screen */
             background-position: center;
- /* Centers the image */
         }
-        /* Optional: Add a subtle overlay to make the text stand out */
         .el-clasico-bg::before {
             content: '';
- position: absolute;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.4);
- /* Dark overlay */
+            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
             z-index: -1;
- }
+        }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-pl-dark min-h-screen text-pl-text">
 
     <div id="splash-screen" class="fixed inset-0 el-clasico-bg flex items-center justify-center z-[100] transition-opacity duration-1000">
         <div class="text-center p-8 rounded-xl bg-black bg-opacity-70 shadow-2xl relative z-10">
-            <i class="ph-fill ph-trophy text-8xl text-yellow-400 animate-pulse"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/100px-Premier_League_Logo.svg.png" 
+                 alt="Premier League Logo" 
+                 class="w-20 h-20 mx-auto text-pl-highlight animate-pulse filter drop-shadow-lg"
+                 style="filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);">
+            
             <h1 class="text-6xl font-black text-white mt-4 tracking-widest">EFOOTBALL</h1>
-            <h2 class="text-2xl font-semibold text-red-500 mt-2">CHAMPIONSHIP PAKISTAN</h2>
+            <h2 class="text-2xl font-semibold text-pl-highlight mt-2">CHAMPIONSHIP PAKISTAN</h2>
             <p 
  class="text-md text-gray-300 mt-6">ORGANIZED BY SANA ULLAH</p>
         </div>
@@ -65,49 +103,37 @@
 
     <div id="main-app" class="hidden max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
         
-        <header class="flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-xl shadow-lg mb-6 sticky top-4 z-40">
-            <h1 class="text-2xl sm:text-3xl font-bold text-indigo-600 flex items-center">
-                <h1>EFC BY SANA ULLAH</h1>
+        <header class="flex flex-col sm:flex-row justify-between items-center custom-header-bg p-4 rounded-xl shadow-lg mb-6 sticky top-4 z-40 text-white">
+            <h1 class="text-2xl sm:text-3xl font-bold flex items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/100px-Premier_League_Logo.svg.png" 
+                     alt="PL Logo" 
+                     class="w-8 h-8 mr-2 filter drop-shadow-lg"
+                     style="filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);">
 
-    <h2>Tournament 
- Registration 
- & Rules</h2>
-        <h3>FIXTURES, POINTS TABLE</h3>
-        <h3>ALL UPDATES ABOUT EFOOTBALL</h3>
-
-    
-                <i class="ph-bold ph-trophy-light text-4xl mr-2"></i>
-                <span class="hidden sm:inline">EFOOTBALL 2025
-                </span>
-                <span 
- class="sm:hidden">EFC PAK 
- BY SANA ULLAH 
-                </span>
+                <span>EFC BY SANA ULLAH</span>
             </h1>
-            <div id="auth-status" class="text-sm mt-2 sm:mt-0 text-gray-500 flex items-center">
-                <i id="user-icon" class="ph-bold ph-user-circle text-xl mr-1 text-gray-400"></i>
+            <div id="auth-status" class="text-sm mt-2 sm:mt-0 text-pl-text flex items-center">
+                <i id="user-icon" class="ph-bold ph-user-circle text-xl mr-1 text-pl-text"></i>
                 <span id="user-display">Guest</span>
         
-   
   </div>
         </header>
 
-        <nav class="bg-white p-1 rounded-xl shadow-md mb-6 sticky top-[80px] z-30">
+        <nav class="bg-pl-header-bar p-1 rounded-xl shadow-md mb-6 sticky top-[80px] z-30">
             <div class="flex flex-wrap justify-around text-center">
-                <div data-tab="admin" class="tab-button flex-1 py-3 px-2 rounded-lg text-red-600 font-semibold text-sm sm:text-base border-2 border-transparent">
+                <div data-tab="admin" class="tab-button flex-1 py-3 px-2 rounded-lg text-white font-semibold text-sm sm:text-base border-2 border-transparent">
                     <i class="ph-bold ph-lock mr-1"></i> ADMIN
    
-        
           </div>
-                <div data-tab="fixtures" class="tab-button flex-1 py-3 px-2 rounded-lg text-indigo-600 font-semibold text-sm sm:text-base bg-indigo-100 border-2 border-indigo-500">
+                <div data-tab="fixtures" class="tab-button flex-1 py-3 px-2 rounded-lg text-white font-semibold text-sm sm:text-base border-2 border-transparent">
                     <i class="ph-bold ph-calendar-blank mr-1"></i> FIXTURES
                 </div>
                 <div 
  data-tab="points" class="tab-button flex-1 py-3 px-2 
- rounded-lg text-indigo-600 font-semibold text-sm sm:text-base">
+ rounded-lg text-white font-semibold text-sm sm:text-base border-2 border-transparent">
                     <i class="ph-bold ph-table mr-1"></i> POINTS TABLE
                 </div>
-                <div data-tab="stats" class="tab-button flex-1 py-3 px-2 rounded-lg text-indigo-600 font-semibold text-sm sm:text-base">
+                <div data-tab="stats" class="tab-button flex-1 py-3 px-2 rounded-lg text-white font-semibold text-sm sm:text-base border-2 border-transparent">
                     <i class="ph-bold ph-chart-bar 
  mr-1"></i> STATS
      
@@ -118,142 +144,131 @@
         <div id="tab-content" class="space-y-6">
 
             <div id="admin" class="tab-pane space-y-6 hidden">
-                <div id="admin-auth-panel" class="bg-white p-6 rounded-xl shadow-md">
+                <div id="admin-auth-panel" class="bg-pl-card p-6 rounded-xl shadow-md">
               
-              <h2 class="text-2xl 
- font-semibold text-red-700 mb-4 border-b pb-2 flex items-center">
-                        <i class="ph-bold ph-lock-key text-2xl mr-2 text-red-500"></i> Admin Access
+       <h2 class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
+                        <i class="ph-bold ph-lock-key text-2xl mr-2 text-pl-highlight"></i> Admin Access
                     </h2>
                     <form id="admin-auth-form" class="space-y-3">
             
-                          
     <input type="password" id="admin-password" placeholder="Enter Admin Password" required
-                            class="block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+                            class="block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
                         <button type="submit"
                     
-                class="w-full px-4 
- py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-150">
+         class="w-full px-4 
+ py-2 bg-pl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-pl-highlight/80 transition duration-150">
                             Unlock Admin Panel
                         </button>
                         <div id="admin-auth-message" class="text-sm 
- mt-2 text-center text-red-500"></div>
+ mt-2 text-center text-pl-highlight"></div>
          
             </form>
                 </div>
 
                 <div id="admin-panel" class="space-y-6 hidden">
                     
-                    <div class="bg-white 
+                    <div class="bg-pl-card 
  p-6 rounded-xl shadow-md">
           
-               <h3 class="text-xl font-bold text-red-700 mb-4 border-b pb-2 flex items-center">
-                            <i class="ph-bold ph-calendar-check mr-2"></i> Organize Ongoing Tournaments
+               <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
+                            <i class="ph-bold ph-calendar-check mr-2 text-pl-highlight"></i> Organize Ongoing Tournaments
                         </h3>
        
-                         
      <div id="current-tournament-status" class="space-y-4">
-                            <div class="text-center py-6 text-gray-500">Loading tournament status...</div>
+                            <div class="text-center py-6 text-pl-text">Loading tournament status...</div>
                         </div>
                     </div>
 
 
    
-                  
-    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-red-700 mb-4 border-b pb-2">Start New Tournament</h3>
+    <div class="bg-pl-card p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg mb-4">Start New Tournament</h3>
                         <form id="start-tournament-form" class="space-y-4">
                     
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
    
                               <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tournament Format</label>
-                                    <div class="flex space-x-4">
-                                        <div class="flex items-center">
-                                            <input id="format-home-only" name="tournament-format" type="radio" value="home-only" checked
-                                                class="h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500">
-                                            <label for="format-home-only" class="ml-2 block text-sm font-medium text-gray-700">Home Only</label>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <input id="format-home-away" name="tournament-format" type="radio" value="home-and-away"
-                                                class="h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500">
-                                            <label for="format-home-away" class="ml-2 block text-sm font-medium text-gray-700">Home & Away</label>
-                                        </div>
-                                    </div>
-                                    <p class="text-xs text-gray-500 mt-1">Select single or double round-robin.</p>
+                                    <label class="block text-sm font-medium text-pl-text">Matches Per Team</label>
+             
+        <input type="number" id="num-rounds" required value="2" min="1"
+                                        class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+                      
+               <p class="text-xs text-gray-400 
+ mt-1">Total rounds will be (Teams - 1) * N</p>
                                 </div>
                                 <div>
-         
-                          
-         <label class="block text-sm font-medium text-gray-700">Teams Count (Even, min 4)</label>
+          
+         <label class="block text-sm font-medium text-pl-text">Teams Count (Even, min 4)</label>
                                     <input type="number" id="teams-count" required value="16" min="4" step="2"
                        
-                                 class="mt-1 block 
- w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+                  class="mt-1 block 
+ w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
                                 </div>
                                 <div>
          
-                             
-        <label class="block text-sm font-medium text-gray-700">Tournament Start Date</label>
+                     
+        <label class="block text-sm font-medium text-pl-text">Tournament Start Date</label>
                                     <input type="date" id="start-date" required
                            
-                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border 
- focus:border-red-500 focus:ring-red-500">
+              class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border 
+ focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
                                 </div>
                                 <div>
              
-                        
-  <label class="block text-sm font-medium text-gray-700">Matches Per Team Per Day</label>
+                       
+  <label class="block text-sm font-medium text-pl-text">Matches Per Team Per Day</label>
                                     <input type="number" id="matches-per-day" required value="1" min="1"
                            
-                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+              class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
      
                                 </div>
                             </div>
 
              
-               <label class="block text-sm font-medium text-gray-700 pt-2">Team & Player Assignment (Team name : Player Name)</label>
+                <label class="block text-sm font-medium text-pl-text pt-2">Team & Player Assignment (Team name : Player Name)</label>
     
                          <textarea id="teams-and-players" rows="16" required
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border 
- focus:border-red-500 focus:ring-red-500">
-Man utd : @~Sonofsardar
-Man city : @~Sayed Maroof Shah
+                                class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border 
+focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+Manchester United : @~Sonofsardar
+Manchester City : @~Sayed Maroof Shah
 Liverpool : @~Asad Ullah
 Chelsea : @~Abdul Hamid Thoba
-Tottenham : @~An
+Tottenham Hotspur : @~An
 Arsenal : @~Hassan Ahad
 Fulham : @⁨~SwordFish⁩
-Nottingham forest : Muazam😒
-Bournmouth : @⁨~Muhammad Yousuf⁩
-Crystal palace : @⁨CADET SYED 😎⁩
-Wolves : @~Muhammad Amjad
+Nottingham Forest : Muazam😒
+AFC Bournemouth : @⁨~Muhammad Yousuf⁩
+Crystal Palace : @⁨CADET SYED 😎⁩
+Wolverhampton Wanderers : @~Muhammad Amjad
 Sunderland : @sanaullah
-Newcastle : @~sana khan
-Brighton : @~Imadkhan
-Aston villa : @~SIKANDAR SHAMS
-Brentford : @asim</textarea>
-                            <p class="text-xs text-gray-500">Ensure the number of lines matches 
+Newcastle United : @~sana khan
+Brighton & Hove Albion : @~Imadkhan
+Aston Villa : @~SIKANDAR SHAMS
+Brentford : @asim
+</textarea>
+                            <p class="text-xs text-gray-400">Ensure the number of lines matches 
  the Teams Count above.</p>
 
                             <button type="submit"
   
-                               class="w-full px-4 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-150 flex items-center justify-center">
+                               class="w-full px-4 py-3 bg-pl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-pl-highlight/80 transition duration-150 flex items-center justify-center">
                       
-                      <i class="ph-bold ph-calendar-plus text-xl mr-2"></i> GENERATE FIXTURES & START
+           <i class="ph-bold ph-calendar-plus text-xl mr-2"></i> GENERATE FIXTURES & START
                  
             </button>
-                            <div id="start-message" class="text-sm mt-2 text-center text-red-500"></div>
+                            <div id="start-message" class="text-sm mt-2 text-center text-pl-highlight"></div>
                     
-         </form>
+     </form>
                     </div>
 
             
-         <div class="bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-red-700 mb-4 border-b pb-2">Upload Match Results</h3>
+         <div class="bg-pl-card p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg mb-4">Upload Match Results</h3>
                    
-              <div id="admin-results-content">
+         <div id="admin-results-content">
                             <div class="text-center py-6 
- text-gray-500">
+ text-pl-text">
                                 Select an active tournament above to load results panel.
  </div>
                         </div>
@@ -263,15 +278,13 @@ Brentford : @asim</textarea>
 
             <div id="fixtures" class="tab-pane space-y-6">
              
- 
-    <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h2 class="text-2xl font-semibold text-indigo-700 mb-4 border-b pb-2 flex items-center">
-                        <i class="ph-bold ph-calendar-check text-2xl mr-2 text-indigo-500"></i> Ongoing Matchday Fixtures
+    <div class="bg-pl-card p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
+                        <i class="ph-bold ph-calendar-check text-2xl mr-2 text-pl-highlight"></i> Ongoing Matchday Fixtures
                     </h2>
             
-           
         <div id="fixtures-content">
-                        <div class="text-center py-6 text-gray-500">
+                        <div class="text-center py-6 text-pl-text">
                             Tournament fixtures will appear here once the schedule is generated.
  </div>
                     </div>
@@ -279,16 +292,14 @@ Brentford : @asim</textarea>
             </div>
 
             <div id="points" class="tab-pane space-y-6 hidden">
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-pl-card p-6 rounded-xl shadow-md">
                 
- 
-     <h2 class="text-2xl font-semibold text-indigo-700 mb-4 border-b pb-2 flex items-center">
-                        <i class="ph-bold ph-list-numbers text-2xl mr-2 text-indigo-500"></i> Official Points Table
+     <h2 class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
+                        <i class="ph-bold ph-list-numbers text-2xl mr-2 text-pl-highlight"></i> Official Points Table
                     </h2>
                     <div id="points-table-content" class="overflow-x-auto">
              
-           
-           <div class="text-center py-6 text-gray-500">
+           <div class="text-center py-6 text-pl-text">
                             Upload results in the Admin tab to populate the points table.
  </div>
                     </div>
@@ -296,32 +307,29 @@ Brentford : @asim</textarea>
             </div>
 
             <div id="stats" class="tab-pane space-y-6 hidden">
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-pl-card p-6 rounded-xl shadow-md">
                 
- 
-     <h2 class="text-2xl font-semibold text-indigo-700 mb-4 border-b pb-2 flex items-center">
-                        <i class="ph-bold ph-chart-line text-2xl mr-2 text-indigo-500"></i> League Statistics
+     <h2 class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
+                        <i class="ph-bold ph-chart-line text-2xl mr-2 text-pl-highlight"></i> League Statistics
                     </h2>
                     <div id="stats-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
            
-           
-             <div id="top-scorers" class="bg-indigo-50 p-4 rounded-lg shadow-inner">
-                            <h4 class="font-bold text-indigo-700 mb-2 border-b pb-1">Top Goalscorers (GF)</h4>
-                            <ul id="scorers-list" class="space-y-1 text-gray-700"></ul>
+             <div id="top-scorers" class="bg-pl-dark p-4 rounded-lg shadow-inner">
+                            <h4 class="font-bold text-white section-header-bg p-2 rounded-lg mb-3">Top Goalscorers (GF)</h4>
+                            <ul id="scorers-list" class="space-y-1 text-pl-text"></ul>
                
-           
         </div>
-                        <div id="top-defense" class="bg-indigo-50 p-4 rounded-lg shadow-inner">
-                            <h4 class="font-bold text-indigo-700 mb-2 border-b pb-1">Best Defense (GA)</h4>
+                        <div id="top-defense" class="bg-pl-dark p-4 rounded-lg shadow-inner">
+                            <h4 class="font-bold text-white section-header-bg p-2 rounded-lg mb-3">Best Defense (GA)</h4>
                           
-               <ul 
- id="defense-list" class="space-y-1 text-gray-700"></ul>
+   <ul 
+ id="defense-list" class="space-y-1 text-pl-text"></ul>
                         </div>
                     </div>
-                    <div id="stats-misc" class="text-center pt-6 text-sm text-gray-500"></div>
+                    <div id="stats-misc" class="text-center pt-6 text-sm text-pl-text/70"></div>
                 </div>
          
-         </div>
+    </div>
  
         </div>
     </div>
@@ -332,7 +340,7 @@ Brentford : @asim</textarea>
     <script>
         // --- CONSTANTS & FIREBASE SETUP ---
         const ADMIN_PASSWORD = "EFOOTBALL2026";
- // YOUR EMBEDDED FIREBASE CONFIGURATION
+        // YOUR EMBEDDED FIREBASE CONFIGURATION
         const firebaseConfig = {
             apiKey: "AIzaSyAKXE_sklR_wpRYUaV-l7jZFHbEOhN0GZU",
             authDomain: "efootball-2026.firebaseapp.com",
@@ -341,56 +349,84 @@ Brentford : @asim</textarea>
             storageBucket: "efootball-2026.firebasestorage.app",
             messagingSenderId: "189433778137",
        
- 
       appId: "1:189433778137:web:10517370da0990108d93c8",
             measurementId: "G-3ZQ3KGXPFG"
         };
- const app = firebase.initializeApp(firebaseConfig);
+        const app = firebase.initializeApp(firebaseConfig);
         const database = app.database();
         const tournamentRef = database.ref('tournament/settings');
 
         let isAdmin = false; 
         let currentTab = 'fixtures';
- let tournamentData = null; // Stores latest tournament data
+        let tournamentData = null; // Stores latest tournament data
 
+        // --- TEAM LOGO MAPPING (Updated to include Sunderland and match player list) ---
+        const TEAM_LOGOS = {
+            'Manchester United': 'https://crests.football-data.org/66.png',
+            'Manchester City': 'https://crests.football-data.org/65.png',
+            'Liverpool': 'https://crests.football-data.org/67.png',
+            'Chelsea': 'https://crests.football-data.org/61.png',
+            'Tottenham Hotspur': 'https://crests.football-data.org/73.png',
+            'Arsenal': 'https://crests.football-data.org/57.png',
+            'Fulham': 'https://crests.football-data.org/63.png',
+            'Nottingham Forest': 'https://crests.football-data.org/351.png',
+            'AFC Bournemouth': 'https://crests.football-data.org/1044.png',
+            'Crystal Palace': 'https://crests.football-data.org/341.png',
+            'Wolverhampton Wanderers': 'https://crests.football-data.org/76.png',
+            'Sunderland': 'https://crests.football-data.org/394.png', // New Team Crest
+            'Newcastle United': 'https://crests.football-data.org/62.png',
+            'Brighton & Hove Albion': 'https://crests.football-data.org/397.png',
+            'Aston Villa': 'https://crests.football-data.org/58.png',
+            'Brentford': 'https://crests.football-data.org/404.png',
+        };
+
+        const getTeamLogoHtml = (teamName, sizeClass = 'w-5 h-5') => {
+            const logoUrl = TEAM_LOGOS[teamName];
+            if (logoUrl) {
+                return `<img src="${logoUrl}" alt="${teamName} Logo" class="${sizeClass} object-contain mr-2">`;
+            }
+            return '';
+        }
+        
         // --- UTILITY FUNCTIONS ---
 
         const showMessage = (elementId, message, isError = true) => {
             const el = document.getElementById(elementId);
- if (!el) return;
+            if (!el) return;
             el.textContent = message;
-            el.className = `text-sm mt-2 text-center ${isError ? 'text-red-500' : 'text-green-500'}`;
- setTimeout(() => el.textContent = '', 5000);
+            el.className = `text-sm mt-2 text-center ${isError ? 'text-pl-highlight' : 'text-green-500'}`;
+            setTimeout(() => el.textContent = '', 5000);
         };
         
         const getDatesBetween = (start, end) => {
             const dates = [];
- let currentDate = new Date(start);
+            let currentDate = new Date(start);
             const endDate = new Date(end);
- // Ensure start date is valid
+            // Ensure start date is valid
             if (isNaN(currentDate.getTime()) || isNaN(endDate.getTime())) return dates;
- while (currentDate <= endDate) {
+            while (currentDate <= endDate) {
                 dates.push(currentDate.toISOString().split('T')[0]);
- currentDate.setDate(currentDate.getDate() + 1);
+                currentDate.setDate(currentDate.getDate() + 1);
             }
             return dates;
         };
- // --- APP INITIALIZATION ---
+        // --- APP INITIALIZATION ---
 
         const initializeApp = () => {
             // Set default dates
             const today = new Date().toISOString().split('T')[0];
- document.getElementById('start-date').value = today;
+            document.getElementById('start-date').value = today;
+            // Removed: Setting default end date
             
             // Set default teams count and matches per day
- document.getElementById('teams-count').value = 16;
- document.getElementById('matches-per-day').value = 1;
+            document.getElementById('teams-count').value = 16;
+            document.getElementById('matches-per-day').value = 1;
 
- // Setup Event Listeners
+            // Setup Event Listeners
             document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
             });
- document.getElementById('admin-auth-form').addEventListener('submit', handleAdminAuth);
+            document.getElementById('admin-auth-form').addEventListener('submit', handleAdminAuth);
             document.getElementById('start-tournament-form').addEventListener('submit', handleStartTournament);
 
             // Hide splash screen and show main app after a delay (6000ms = 6 seconds)
@@ -399,218 +435,165 @@ Brentford : @asim</textarea>
                 setTimeout(() => {
                     document.getElementById('splash-screen').classList.add('hidden');
             
- 
          document.getElementById('main-app').classList.remove('hidden');
                 }, 1000);
             }, 6000);
- // 6 seconds delay
+            // 6 seconds delay
+            
+            // Ensure the initial tab (fixtures) is correctly activated on load
+            switchTab(currentTab);
         };
- // --- TAB NAVIGATION ---
+        // --- TAB NAVIGATION ---
 
         const switchTab = (tabName) => {
             currentTab = tabName;
- // Update buttons
+            // Update buttons
             document.querySelectorAll('.tab-button').forEach(btn => {
                 const isSelected = btn.getAttribute('data-tab') === tabName;
-                const isRedTab = btn.getAttribute('data-tab') === 'admin';
                 
                 // Reset classes
         
- 
-         btn.classList.remove('bg-indigo-100', 'border-indigo-500', 'bg-red-600', 'text-white', 'text-indigo-600', 'text-red-600');
+         btn.classList.remove('bg-pl-accent', 'border-pl-highlight', 'text-pl-highlight', 'text-white', 'border-transparent');
                 btn.classList.add('border-2');
 
                 if (isSelected) {
-                    if (isRedTab) {
-                        btn.classList.add('bg-red-600', 'text-white', 'border-red-500');
-    
-   
-                } else {
-                        btn.classList.add('bg-indigo-100', 'text-indigo-600', 'border-indigo-500');
-                    }
+                    // Active tab: Set accent background, highlight border, and white text
+                    btn.classList.add('bg-pl-accent', 'text-white', 'border-pl-highlight');
                 } else {
                  
-                
-  btn.classList.add('border-transparent');
-                    if (isRedTab) {
-                        btn.classList.add('text-red-600');
-                    } else {
-                        btn.classList.add('text-indigo-600');
- }
+                  // Inactive tab: Set transparent border and **PERMANENTLY WHITE TEXT**
+                  btn.classList.add('border-transparent', 'text-white'); 
                 }
             });
- // Update content panes
+            // Update content panes
             document.querySelectorAll('.tab-pane').forEach(pane => {
                 pane.classList.toggle('hidden', pane.id !== tabName);
             });
- // Re-render admin results and management if switching to admin
+            // Re-render admin results and management if switching to admin
             if (tabName === 'admin' && isAdmin) {
                 renderAdminManagementPanel(tournamentData);
- // Rerender management panel
+                // Rerender management panel
                 renderAdminResultsContent(tournamentData);
- // Rerender results panel
+                // Rerender results panel
             }
             
             // Re-render stats if switching to stats
             if (tabName === 'stats' && tournamentData) {
                 const standings = calculateStandings(tournamentData.teams, tournamentData.schedule);
- renderStats(standings, tournamentData.players);
+                renderStats(standings, tournamentData.players);
             }
         };
- // --- ADMIN AUTHENTICATION ---
+        // --- ADMIN AUTHENTICATION ---
 
         const handleAdminAuth = (e) => {
             e.preventDefault();
- const password = document.getElementById('admin-password').value;
+            const password = document.getElementById('admin-password').value;
             if (password === ADMIN_PASSWORD) {
                 isAdmin = true;
- document.getElementById('admin-auth-panel').classList.add('hidden');
+                document.getElementById('admin-auth-panel').classList.add('hidden');
                 document.getElementById('admin-panel').classList.remove('hidden');
-                document.getElementById('user-icon').classList.replace('text-gray-400', 'text-red-600');
+                document.getElementById('user-icon').classList.replace('text-pl-text', 'text-pl-highlight');
                 document.getElementById('user-display').textContent = `Admin User`;
                 showMessage('admin-auth-message', 'Admin access granted!', false);
- // Call render functions immediately after login
+                // Call render functions immediately after login
                 renderAdminManagementPanel(tournamentData);
- renderAdminResultsContent(tournamentData);
+                renderAdminResultsContent(tournamentData);
             } else {
                 isAdmin = false;
- showMessage('admin-auth-message', 'Incorrect password. Access denied.', true);
+                showMessage('admin-auth-message', 'Incorrect password. Access denied.', true);
             }
         };
-        
-        // --- CORRECTED TOURNAMENT SCHEDULE GENERATION (PERFECTLY BALANCED ROUND ROBIN) ---
-        
+        // --- TOURNAMENT SCHEDULE GENERATION (Standard Round Robin) ---
+
         const generateRoundRobin = (teamNames, numRounds, startDateStr, matchesPerTeamPerDay) => {
             let n = teamNames.length;
-            if (n % 2 !== 0) n++; // Ensure N is even
+            if (n % 2 !== 0) n++;
             let teams = [...teamNames];
-            while (teams.length < n) { teams.push('BYE'); } // Pad with BYE if odd
+            while (teams.length < n) { teams.push('BYE');
+            } // Pad with BYE if odd
 
             const schedule = [];
             const totalRoundRobinRounds = n - 1;
-            const matchesPerRoundDay = Math.floor(n / 2) * matchesPerTeamPerDay; 
+            const totalLeagueRounds = totalRoundRobinRounds * numRounds;
+            const half = n / 2;
+            // New logic for Matchday assignment
+            const matchesPerRoundDay = Math.floor(n / 2) * matchesPerTeamPerDay;
+            // Total matches played by players in one day
             let currentMatchDay = new Date(startDateStr);
             let matchesOnCurrentDay = 0;
             let leagueRoundNumber = 0;
             
-            // Teams to rotate (T1 to TN-1)
-            let rotatingTeams = teams.slice(1); // The array that rotates
-            const fixedTeam = teams[0]; // The team that stays put (T0)
-            
-            // --- 1. GENERATE PURE SINGLE ROUND-ROBIN (FIRST HALF) ---
-            const firstRoundSchedule = [];
-            const rotationLength = rotatingTeams.length; // N-1
-            const halfRotating = Math.floor(rotationLength / 2); // (N-1)/2
-            
-            for (let round = 1; round <= totalRoundRobinRounds; round++) { // N-1 rounds
-                const roundMatches = [];
-                
-                // 1. Match the Fixed Team (T0) with the last team of the rotating array
-                const opponentOfFixed = rotatingTeams[rotationLength - 1]; // Last element of rotating teams
-                
-                // H/A assignment for fixed team match: Alternates Home (Odd) / Away (Even)
-                let homeFixed, awayFixed;
-                if (round % 2 === 1) { 
-                    homeFixed = fixedTeam; awayFixed = opponentOfFixed;
-                } else { 
-                    homeFixed = opponentOfFixed; awayFixed = fixedTeam;
-                }
-                
-                if (fixedTeam !== 'BYE' && opponentOfFixed !== 'BYE') {
-                    roundMatches.push({ home: homeFixed, away: awayFixed });
-                }
-
-                // 2. Match the remaining rotating teams in pairs (inwards from both ends)
-                for (let i = 0; i < halfRotating; i++) {
-                    const team1 = rotatingTeams[i]; // Starts from T1 and moves right
-                    const team2 = rotatingTeams[rotationLength - 2 - i]; // Starts from T_N-2 and moves left
-                                        
-                    // H/A assignment for rotating pairs: Must be opposite to the fixed team's match for round balance
-                    let homeRotating, awayRotating;
-                    if (round % 2 === 1) { // Odd round: T0 is Home, so T2 (right column) must be Home for rotation balance
-                        homeRotating = team2; 
-                        awayRotating = team1; 
-                    } else { // Even round: T0 is Away, so T1 (left column) must be Home for rotation balance
-                        homeRotating = team1; 
-                        awayRotating = team2; 
-                    }
-
-                    if (team1 !== 'BYE' && team2 !== 'BYE') {
-                        roundMatches.push({ home: homeRotating, away: awayRotating });
-                    }
-                }
-                
-                firstRoundSchedule.push(roundMatches);
-
-                // 3. Rotate the teams (T1 to T_N-1) by one position
-                const last = rotatingTeams.pop();
-                rotatingTeams.unshift(last);
-            }
-            
-            // --- 2. REPEAT AND FLIP SCHEDULE BASED ON FORMAT ---
-            
-            // numRounds will be 1 (Home Only) or 2 (Home & Away)
             for (let r = 1; r <= numRounds; r++) {
-                const shouldFlipHomeAway = r === 2; // Only flip if generating the second block
-
-                firstRoundSchedule.forEach((roundMatches, rrIndex) => {
+                // Determine if we should flip the home/away teams for this round block
+                const isFlippedRoundBlock = r % 2 === 0;
+                let currentTeams = [...teams];
+                
+                for (let round = 1; round <= totalRoundRobinRounds; round++) {
                     leagueRoundNumber++;
-                    const newRoundMatches = [];
+                    const roundMatches = [];
                     
-                    roundMatches.forEach((match, matchIndex) => {
-                        const originalHome = match.home;
-                        const originalAway = match.away;
-                        
-                        // Apply the flip for the second half of the tournament (r=2)
-                        const [home, away] = shouldFlipHomeAway ? 
-                                                [originalAway, originalHome] : 
-                                                [originalHome, originalAway];
+                    for (let i = 0; i < half; i++) {
+                        const home = currentTeams[i];
+                        const away = currentTeams[i + half];
 
-                        newRoundMatches.push({
-                            id: `${leagueRoundNumber}-${matchIndex}`, 
-                            home: home, 
-                            away: away,
-                            homeScore: null,
-                            awayScore: null,
-                        });
-                    });
-                    
-                    // Assign date logic
+                        if (home !== 'BYE' && away !== 'BYE') {
+                            
+                            // Combine flipping: flip if r is even.
+                            const [team1, team2] = isFlippedRoundBlock ? [away, home] : [home, away];
+                            roundMatches.push({
+                                id: `${leagueRoundNumber}-${roundMatches.length}`, // Use index as part of ID for uniqueness
+                                home: team1,
+                         
+                                away: team2,
+ 
+                                homeScore: null,
+                                awayScore: null,
+                         
+                            });
+                        }
+                    }
+
+                    // Assign date based on matchesPerRoundDay
                     let dateToAssign = currentMatchDay.toISOString().split('T')[0];
-                    matchesOnCurrentDay += newRoundMatches.length;
+                    matchesOnCurrentDay += roundMatches.length;
 
+                    // If adding these matches exceeds the limit, move to the next day
                     if (matchesOnCurrentDay > matchesPerRoundDay) {
                         currentMatchDay.setDate(currentMatchDay.getDate() + 1);
                         dateToAssign = currentMatchDay.toISOString().split('T')[0];
-                        matchesOnCurrentDay = newRoundMatches.length;
+                        matchesOnCurrentDay = roundMatches.length; // Start count for the new day
                     }
 
                     schedule.push({ 
                         round: leagueRoundNumber, 
-                        date: dateToAssign,
-                        matches: newRoundMatches 
+                     
+                        date: dateToAssign, // Assigned date
+                        matches: roundMatches 
+ 
                     });
-                });
+                    // Rotate teams (Fixed team[0], rotate the rest)
+                    if (currentTeams.length > 2) {
+                        const fixedTeam = currentTeams[0];
+                        const last = currentTeams.pop();
+                        currentTeams.splice(1, 0, last);
+                        currentTeams[0] = fixedTeam;
+                        // Keep the first team fixed after rotation
+                    }
+                }
             }
             return schedule;
         };
-
         
         const handleStartTournament = async (e) => {
             e.preventDefault();
- if (!isAdmin) { showMessage('start-message', 'Admin privileges required.', true); return; }
+            if (!isAdmin) { showMessage('start-message', 'Admin privileges required.', true); return; }
 
             const teamsCount = parseInt(document.getElementById('teams-count').value);
-            
-            // NEW LOGIC: Determine numRounds based on format selection
-            const formatEl = document.querySelector('input[name="tournament-format"]:checked');
-            const format = formatEl ? formatEl.value : 'home-only'; 
-            // numRounds is 1 for Home Only, 2 for Home & Away
-            const numRounds = format === 'home-and-away' ? 2 : 1;
-            
+            const numRounds = parseInt(document.getElementById('num-rounds').value);
             const startDateStr = document.getElementById('start-date').value;
+            // NEW INPUT
             const matchesPerTeamPerDay = parseInt(document.getElementById('matches-per-day').value);
-            
+            // Removed: endDateStr
             const playerInput = document.getElementById('teams-and-players').value.trim().split('\n');
             const teams = [];
             const players = {};
@@ -622,50 +605,50 @@ Brentford : @asim</textarea>
       
          }
             });
-            
- if (teams.length !== teamsCount || teamsCount < 4 || teamsCount % 2 !== 0) {
+            if (teams.length !== teamsCount || teamsCount < 4 || teamsCount % 2 !== 0) {
                 showMessage('start-message', 'Teams count must be even (min 4) and match the input list size.', true);
- return;
+                return;
             }
             
-            // PASS numRounds (1 or 2) to generation function
+            // PASS NEW PARAMETER
             const schedule = generateRoundRobin(teams, numRounds, startDateStr, matchesPerTeamPerDay);
-            
             const tournamentDataToSave = {
                 teams: teams,
                 players: players,
-                numRoundsPerTeam: numRounds, // Kept for calculation consistency
-                format: format, // NEW field for display
+                numRoundsPerTeam: numRounds,
                 startDate: startDateStr,
+                // NEW DATA FIELD
+          
                 matchesPerTeamPerDay: matchesPerTeamPerDay,
+                // Removed: endDateStr
+            
                 schedule: schedule, // Save as object/array for Realtime DB
-                organizerId: "ADMIN_USER", 
+                organizerId: "ADMIN_USER", // Simple placeholder
                 lastUpdated: new Date().toISOString()
             
- };
-            
- try {
+            };
+            try {
                 // Realtime Database 'set' function
                 await tournamentRef.set(tournamentDataToSave);
- showMessage('start-message', `Tournament started with ${schedule.length} matchdays!`, false);
+                showMessage('start-message', `Tournament started with ${schedule.length} matchdays!`, false);
                 switchTab('fixtures'); // Move to fixtures tab after creation
             } catch (error) {
                 console.error("Error saving tournament data:", error);
- showMessage('start-message', 'Failed to save tournament data. Check console.', true);
+                showMessage('start-message', 'Failed to save tournament data. Check console.', true);
             }
         };
- // --- TOURNAMENT DELETION LOGIC ---
+        // --- TOURNAMENT DELETION LOGIC ---
         const handleDeleteTournament = async () => {
              if (!isAdmin) return;
-             const confirmation = confirm("Are you sure you want to delete the entire tournament and all results? This action cannot be undone.");
-             if (confirmation) {
+            const confirmation = confirm("Are you sure you want to delete the entire tournament and all results? This action cannot be undone.");
+            if (confirmation) {
                  try {
                      await tournamentRef.remove();
- // Data will be reset via the listener
+                    // Data will be reset via the listener
                      showMessage('current-tournament-status', 'Tournament successfully deleted!', false);
- } catch (error) {
+                 } catch (error) {
                      console.error("Error deleting tournament:", error);
- showMessage('current-tournament-status', 'Failed to delete tournament. Check console.', true);
+                     showMessage('current-tournament-status', 'Failed to delete tournament. Check console.', true);
                  }
              }
         }
@@ -675,69 +658,67 @@ Brentford : @asim</textarea>
 
         const handleResultUpdate = async (e) => {
             e.preventDefault();
- if (!isAdmin || !tournamentData) return;
+            if (!isAdmin || !tournamentData) return;
 
             const form = e.currentTarget;
             const matchId = form.getAttribute('data-match-id');
             const homeScore = parseInt(form.querySelector('.score-input-home').value);
- const awayScore = parseInt(form.querySelector('.score-input-away').value);
+            const awayScore = parseInt(form.querySelector('.score-input-away').value);
 
             if (isNaN(homeScore) || isNaN(awayScore)) {
                 alert('Scores must be valid numbers.');
- return;
+                return;
             }
             
             try {
                 // Find and update the match in the local copy of the schedule
                 let found = false;
- const newSchedule = tournamentData.schedule.map(round => ({
+                const newSchedule = tournamentData.schedule.map(round => ({
                     ...round,
                     matches: round.matches.map(match => {
                         if (match.id === matchId) {
                         
- 
      match.homeScore = homeScore;
                             match.awayScore = awayScore;
                             found = true;
                         }
          
-           return match;
+               return match;
                     })
                 }));
- if (found) {
+                if (found) {
                     // Update the entire 'schedule' node in the database
                     await tournamentRef.update({
                         schedule: newSchedule,
                         
- 
- lastUpdated: new Date().toISOString()
+                        lastUpdated: new Date().toISOString()
                     });
- // Small visual feedback on the button
+                    // Small visual feedback on the button
                     const btn = form.querySelector('button[type="submit"]');
- btn.innerHTML = `<i class="ph-bold ph-check text-lg"></i>`;
-                    btn.classList.replace('bg-red-600', 'bg-green-600');
+                    btn.innerHTML = `<i class="ph-bold ph-check text-lg"></i>`;
+                    btn.classList.replace('bg-pl-highlight', 'bg-green-600');
                     setTimeout(() => {
                         btn.innerHTML = `<i class="ph-bold ph-floppy-disk text-lg"></i>`;
-                        btn.classList.replace('bg-green-600', 'bg-red-600');
+                        btn.classList.replace('bg-green-600', 'bg-pl-highlight');
                     }, 1000);
- } else {
+                } else {
                     throw "Match ID not found in schedule.";
- }
+                }
             } catch (error) {
                 console.error("Failed to update match result:", error);
- alert('Failed to save result. Check console.');
+                alert('Failed to save result. Check console.');
             }
         };
- // --- STANDINGS & STATS CALCULATIONS ---
+        // --- STANDINGS & STATS CALCULATIONS ---
 
         const calculateStandings = (teams, scheduleData) => {
             const standings = {};
- teams.forEach(team => {
+            teams.forEach(team => {
                 standings[team] = {
                     team: team, P: 0, W: 0, D: 0, L: 0, GF: 0, GA: 0, GD: 0, Pts: 0
                 };
             });
- if (!scheduleData) return [];
+            if (!scheduleData) return [];
 
             scheduleData.forEach(round => {
                 round.matches.forEach(match => {
@@ -745,7 +726,6 @@ Brentford : @asim</textarea>
                     const awayTeam = match.away;
                     const homeScore = parseInt(match.homeScore);
        
- 
               const awayScore = parseInt(match.awayScore);
 
                     if (isNaN(homeScore) || isNaN(awayScore) || !standings[homeTeam] || !standings[awayTeam]) return;
@@ -753,7 +733,6 @@ Brentford : @asim</textarea>
                     const home = standings[homeTeam];
                     const away = standings[awayTeam];
          
-           
            
                     // Games Played (P)
                     home.P++; away.P++;
@@ -767,72 +746,64 @@ Brentford : @asim</textarea>
                     // Results and Points
                     if (homeScore > awayScore) {
                         
- home.W++; home.Pts += 
+                        home.W++; home.Pts += 
  3; away.L++;
                     } else if (homeScore < awayScore) {
                         away.W++;
- away.Pts += 3; home.L++;
+                        away.Pts += 3; home.L++;
                     } else {
                         home.D++;
- home.Pts += 1; away.D++; away.Pts += 1;
+                        home.Pts += 1; away.D++; away.Pts += 1;
                     }
                 });
- });
+            });
 
             // Calculate Goal Difference (GD)
             Object.values(standings).forEach(team => {
                 team.GD = team.GF - team.GA;
             });
- // Sort by Pts (desc), then GD (desc), then GF (desc)
+            // Sort by Pts (desc), then GD (desc), then GF (desc)
             return Object.values(standings).sort((a, b) => 
                 b.Pts - a.Pts || b.GD - a.GD || b.GF - a.GF
             );
- };
+        };
         
         // --- RENDERING FUNCTIONS ---
         
         const renderAdminManagementPanel = (tournament) => {
              const container = document.getElementById('current-tournament-status');
-             if (!tournament) {
+            if (!tournament) {
                  container.innerHTML = `
-                     <div class="p-4 bg-red-100 border-l-4 border-red-500 text-red-700">
+                     <div class="p-4 bg-pl-card border-l-4 border-pl-highlight text-pl-text">
                          <p class="font-bold">No Active Tournament</p>
                          
- 
  <p class="text-sm">Use the 'Start New Tournament' section below to create a schedule.</p>
                      </div>
                  `;
- // Also ensure the results content is reset if no tournament is active
-                 document.getElementById('admin-results-content').innerHTML = '<div class="text-center py-6 text-gray-500">Generate a schedule above to start uploading results.</div>';
- return;
+                // Also ensure the results content is reset if no tournament is active
+                 document.getElementById('admin-results-content').innerHTML = '<div class="text-center py-6 text-pl-text">Generate a schedule above to start uploading results.</div>';
+                return;
              }
              
              const standings = calculateStandings(tournament.teams, tournament.schedule);
-             const matchesPlayed = standings.reduce((sum, t) => sum + t.P, 0) / 2;
-             const totalMatches = tournament.schedule.reduce((sum, r) => sum + r.matches.length, 0);
-             const progress = totalMatches > 0 ?
- ((matchesPlayed / totalMatches) * 100).toFixed(0) : 0;
-             const firstPlace = standings.length > 0 ? standings[0].team : 'N/A';
-             // Calculate Estimated End Date
-             const uniqueDates = [...new Set(tournament.schedule.map(r => r.date))];
-             const estimatedEndDate = uniqueDates.length > 0 ? uniqueDates[uniqueDates.length - 1] : 'N/A';
-             
-             const formatDisplay = tournament.format === 'home-and-away' ? 
-                                 'Home & Away (Double RR)' : 
-                                 'Home Only (Single RR)';
-             
-             container.innerHTML = `
-                 <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
-                     <p class="font-bold text-green-700 flex items-center mb-2">
+            const matchesPlayed = standings.reduce((sum, t) => sum + t.P, 0) / 2;
+            const totalMatches = tournament.schedule.reduce((sum, r) => sum + r.matches.length, 0);
+            const progress = totalMatches > 0 ?
+            ((matchesPlayed / totalMatches) * 100).toFixed(0) : 0;
+            const firstPlace = standings.length > 0 ? standings[0].team : 'N/A';
+            // Calculate Estimated End Date
+            const uniqueDates = [...new Set(tournament.schedule.map(r => r.date))];
+            const estimatedEndDate = uniqueDates.length > 0 ? uniqueDates[uniqueDates.length - 1] : 'N/A';
+            container.innerHTML = `
+                 <div class="bg-pl-dark p-4 rounded-lg border-2 border-pl-highlight/50">
+                     <p class="font-bold text-pl-highlight flex items-center mb-2">
                         <i class="ph-bold ph-calendar-check text-xl mr-2"></i> Active Tournament (EFOOTBALL 2026)
                   
- 
      </p>
-                     <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+                     <div class="grid grid-cols-2 gap-2 text-sm text-pl-text">
                          <p><strong>Teams:</strong> ${tournament.teams.length}</p>
-                         <p><strong>Format:</strong> ${formatDisplay}</p>
+                         <p><strong>Rounds:</strong> ${tournament.numRoundsPerTeam}</p>
                  
-           
        <p><strong>Matches:</strong> ${matchesPlayed} / ${totalMatches}</p>
                          <p><strong>Leader:</strong> ${firstPlace}</p>
                          <p><strong>Start Date:</strong> ${tournament.startDate}</p>
@@ -841,126 +812,115 @@ Brentford : @asim</textarea>
                          <p class="col-span-2"><strong>Matches/Day/Team:</strong> ${tournament.matchesPerTeamPerDay}</p>
                      </div>
                
-       <div class="w-full bg-gray-200 rounded-full h-2.5 mt-3">
+       <div class="w-full bg-pl-card rounded-full h-2.5 mt-3">
                        
-  <div class="bg-green-600 h-2.5 rounded-full" style="width: ${progress}%"></div>
+ <div class="bg-pl-highlight h-2.5 rounded-full" style="width: ${progress}%"></div>
                      </div>
-                     <p class="text-xs text-center text-gray-500 mt-1">${progress}% Complete</p>
+                     <p class="text-xs text-pl-text/70 text-center mt-1">${progress}% Complete</p>
              
      </div>
                  <div class="flex justify-center mt-4">
          
-             <button id="delete-tournament-btn" 
-                        class="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition duration-150 flex items-center">
+            <button id="delete-tournament-btn" 
+                        class="px-4 py-2 bg-pl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-pl-highlight/80 transition duration-150 flex items-center">
                   
        <i class="ph-bold ph-trash-simple text-lg mr-2"></i> Delete Tournament
                     
-  </button>
+ </button>
                  </div>
              `;
- document.getElementById('delete-tournament-btn').addEventListener('click', handleDeleteTournament);
+            document.getElementById('delete-tournament-btn').addEventListener('click', handleDeleteTournament);
              
              // After rendering the management panel, ensure the results panel is loaded too
              renderAdminResultsContent(tournament);
- }
+        }
 
         const renderAdminResultsContent = (tournament) => {
             const container = document.getElementById('admin-results-content');
- if (!isAdmin || !tournament || !tournament.schedule) {
-                 container.innerHTML = '<div class="text-center py-6 text-gray-500">Generate a schedule above to start uploading results.</div>';
- return;
+            if (!isAdmin || !tournament || !tournament.schedule) {
+                 container.innerHTML = '<div class="text-center py-6 text-pl-text">Generate a schedule above to start uploading results.</div>';
+                return;
             }
 
             const scheduleData = tournament.schedule;
-            const players = tournament.players || {}; // Get players object
             let html = '';
 
             scheduleData.forEach(round => {
                 html += `
-                    <div class="bg-red-50 p-3 rounded-lg mt-4 shadow-inner">
-                        <h4 class="text-md font-bold text-red-700 mb-3">Matchday ${round.round} (${round.date})</h4>
+                    <div class="bg-pl-dark p-3 rounded-lg mt-4 shadow-inner">
+                        <h4 class="text-md font-bold text-pl-highlight mb-3">Matchday ${round.round} (${round.date})</h4>
                      
- 
     <div class="space-y-2">
                 `;
                 round.matches.forEach(match => {
-                    // Look up player names
-                    const homePlayer = players[match.home] ? ` (${players[match.home]})` : '';
-                    const awayPlayer = players[match.away] ? ` (${players[match.away]})` : '';
-
                     const homeScore = match.homeScore === null ? '' : match.homeScore;
                     const awayScore = match.awayScore === null ? '' : match.awayScore;
    
-   
                  
                     html += `
-                        <form data-match-id="${match.id}" class="match-update-form flex items-center space-x-2 bg-white p-2 rounded-md border border-red-200">
+                        <form data-match-id="${match.id}" class="match-update-form flex items-center space-x-2 bg-pl-card p-2 rounded-md border border-pl-highlight/30">
                           
-             
- <div class="font-semibold text-gray-800 w-1/3 truncate">${match.home}${homePlayer}</div>
-                            <input type="number" min="0" value="${homeScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-home focus:border-red-500">
-                            <span class="font-bold text-red-600">-</span>
+ <div class="font-semibold text-pl-text w-1/3 truncate">${match.home}</div>
+                            <input type="number" min="0" value="${homeScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-home focus:border-pl-highlight bg-pl-dark text-pl-text">
+                            <span class="font-bold text-pl-highlight">-</span>
                         
-                             
-  <input type="number" min="0" value="${awayScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-away focus:border-red-500">
-                            <div class="font-semibold text-gray-800 w-1/3 text-right truncate">${match.away}${awayPlayer}</div>
-                            <button type="submit" class="p-1 bg-red-600 text-white rounded-md text-sm hover:bg-red-700 transition" title="Save Score">
+    
+  <input type="number" min="0" value="${awayScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-away focus:border-pl-highlight bg-pl-dark text-pl-text">
+                            <div class="font-semibold text-pl-text w-1/3 text-right truncate">${match.away}</div>
+                            <button type="submit" class="p-1 bg-pl-highlight text-white rounded-md text-sm hover:bg-pl-highlight/80 transition" title="Save Score">
              
-                             
+     
                <i class="ph-bold ph-floppy-disk text-lg"></i>
                             </button>
                         </form>
                     `;
- });
+                });
                 html += `</div></div>`;
             });
             container.innerHTML = html;
             container.querySelectorAll('.match-update-form').forEach(form => {
                 form.addEventListener('submit', handleResultUpdate);
             });
- };
+        };
 
         const renderFixtures = (tournament) => {
             const container = document.getElementById('fixtures-content');
- if (!tournament || !tournament.schedule || tournament.schedule.length === 0) {
-                container.innerHTML = '<div class="text-center py-6 text-gray-500">Tournament fixtures will appear here once the schedule is generated.</div>';
- return;
+            if (!tournament || !tournament.schedule || tournament.schedule.length === 0) {
+                container.innerHTML = '<div class="text-center py-6 text-pl-text">Tournament fixtures will appear here once the schedule is generated.</div>';
+                return;
             }
             
             const scheduleData = tournament.schedule;
-            const players = tournament.players || {}; // Get players object
             let html = '';
             
             scheduleData.forEach(round => {
                 html += `
-                    <div class="bg-indigo-50 p-4 rounded-lg mt-4 shadow-inner">
-                        <h4 class="text-lg font-bold text-indigo-700 mb-3">Matchday ${round.round} (${round.date})</h4>
+                    <div class="bg-pl-dark p-4 rounded-lg mt-4 shadow-inner">
+                        <h4 class="text-lg font-bold text-pl-highlight mb-3">Matchday ${round.round} (${round.date})</h4>
                      
- 
     <div class="space-y-2">
                 `;
                 round.matches.forEach(match => {
-                    // Look up player names
-                    const homePlayer = players[match.home] ? ` (${players[match.home]})` : '';
-                    const awayPlayer = players[match.away] ? ` (${players[match.away]})` : '';
-
                     const scoreDisplay = match.homeScore !== null ? 
-                        `<span class="font-bold">${match.homeScore} - ${match.awayScore}</span>` : 
+                        `<span class="font-bold text-white">${match.homeScore} - ${match.awayScore}</span>` : 
      
-                       '<span class="text-gray-500 italic">vs</span>';
+                      '<span class="text-pl-text/50 italic">vs</span>';
+
+                    const homeLogo = getTeamLogoHtml(match.home, 'w-6 h-6');
+                    const awayLogo = getTeamLogoHtml(match.away, 'w-6 h-6');
                         
                     html += `
-                        <div class="flex justify-between items-center bg-white 
- p-3 rounded-md shadow-sm border border-indigo-200">
+                        <div class="flex justify-between items-center bg-pl-card 
+ p-3 rounded-md shadow-sm border border-pl-highlight/30">
  
-                            <div class="font-semibold text-gray-800 w-1/3 truncate">${match.home}${homePlayer}</div>
+                            <div class="font-semibold text-pl-text w-1/3 flex items-center truncate">${homeLogo} ${match.home}</div>
                             <div class="w-1/3 text-center">${scoreDisplay}</div>
-                            <div class="font-semibold text-gray-800 w-1/3 text-right 
- truncate">${match.away}${awayPlayer}</div>
+                            <div class="font-semibold text-pl-text w-1/3 text-right 
+ flex items-center justify-end truncate">${match.away} ${awayLogo}</div>
       
                    </div>
                     `;
- });
+                });
                 html += `</div></div>`;
             });
             container.innerHTML = html;
@@ -968,17 +928,16 @@ Brentford : @asim</textarea>
 
         const renderPointsTable = (standings, players) => {
             const container = document.getElementById('points-table-content');
- if (standings.length === 0) {
-                container.innerHTML = '<div class="text-center py-6 text-gray-500">Upload results in the Admin tab to populate the points table.</div>';
- return;
+            if (standings.length === 0) {
+                container.innerHTML = '<div class="text-center py-6 text-pl-text">Upload results in the Admin tab to populate the points table.</div>';
+                return;
             }
             
             const header = `
-                <table class="min-w-full divide-y divide-gray-200 shadow overflow-hidden sm:rounded-lg">
-                    <thead class="bg-indigo-600 text-white">
+                <table class="min-w-full divide-y divide-pl-highlight/30 shadow overflow-hidden sm:rounded-lg">
+                    <thead class="bg-pl-highlight text-white">
                         <tr>
     
- 
                          <th class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">#</th>
                             <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Team (Player)</th>
                             <th class="px-3 py-3 text-center 
@@ -987,31 +946,28 @@ Brentford : @asim</textarea>
                             <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden sm:table-cell">W</th>
                             <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden sm:table-cell">D</th>
                       
-               
      <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden sm:table-cell">L</th>
                             <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden md:table-cell">GF</th>
                             <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden md:table-cell">GA</th>
           
-                     
                 <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider">GD</th>
                             <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider">Pts</th>
                         </tr>
                
-                   
   </thead>
-                    <tbody class="bg-white divide-y divide-gray-200" id="table-body">
+                    <tbody class="bg-pl-card divide-y divide-pl-highlight/30" id="table-body">
             `;
- let rows = '';
+            let rows = '';
             standings.forEach((team, index) => {
-                const rankClass = index < 2 ? 'bg-yellow-100 font-bold' : 'bg-white';
+                const rankClass = index < 4 ? 'bg-pl-dark font-bold border-l-4 border-pl-highlight' : 'bg-pl-card'; // Top 4 highlight
                 const playerName = players[team.team] || 'N/A';
+                const teamLogo = getTeamLogoHtml(team.team);
                 rows += `
                     <tr class="${rankClass}">
        
- 
-                  <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">${index + 1}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            ${team.team} <span class="text-gray-500 text-xs block sm:inline">(${playerName})</span>
+                  <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-pl-text text-center">${index + 1}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-pl-text flex items-center">
+                            ${teamLogo} ${team.team} <span class="text-pl-text/50 text-xs ml-2 block sm:inline">(${playerName})</span>
            
              </td>
                         <td class="px-3 py-4 whitespace-nowrap text-sm text-center">${team.P}</td>
@@ -1023,63 +979,63 @@ Brentford : @asim</textarea>
                         <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden md:table-cell">${team.GF}</td>
                         <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden md:table-cell">${team.GA}</td>
  
-                     
-                      <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-bold">${team.GD > 0 ?
+    
+                      <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-pl-highlight">${team.GD > 0 ?
  '+' : ''}${team.GD}</td>
-                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-extrabold text-indigo-700">${team.Pts}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-extrabold text-pl-highlight">${team.Pts}</td>
                     </tr>
                 `;
- });
+            });
 
             container.innerHTML = header + rows + '</tbody></table>';
         };
 
         const renderStats = (standings, players) => {
             const scorersList = document.getElementById('scorers-list');
- const defenseList = document.getElementById('defense-list');
+            const defenseList = document.getElementById('defense-list');
             const statsMisc = document.getElementById('stats-misc');
             
             if (standings.length === 0) {
                 scorersList.innerHTML = '<li>No stats available yet.</li>';
- defenseList.innerHTML = '<li>No stats available yet.</li>';
+                defenseList.innerHTML = '<li>No stats available yet.</li>';
                 statsMisc.textContent = 'Data will populate after match results are entered.';
- return;
- }
+                return;
+            }
 
             // Top Scorers (Sort by GF desc)
             const topScorers = [...standings].sort((a, b) => b.GF - a.GF).slice(0, 5);
- scorersList.innerHTML = topScorers.map(team => {
+            scorersList.innerHTML = topScorers.map(team => {
                 const playerName = players[team.team] || 'N/A';
-                return `<li class="flex justify-between">
-                            <span>${team.team} (${playerName})</span>
+                const teamLogo = getTeamLogoHtml(team.team, 'w-4 h-4');
+                return `<li class="flex justify-between items-center">
+                            <span class="flex items-center">${teamLogo} ${team.team} (${playerName})</span>
                            
- 
-  <span class="font-bold text-indigo-600">${team.GF}</span>
+  <span class="font-bold text-pl-highlight">${team.GF}</span>
                         </li>`;
             }).join('');
- // Best Defense (Sort by GA asc)
+            // Best Defense (Sort by GA asc)
             const bestDefense = [...standings].sort((a, b) => a.GA - b.GA).slice(0, 5);
- defenseList.innerHTML = bestDefense.map(team => {
+            defenseList.innerHTML = bestDefense.map(team => {
                 const playerName = players[team.team] || 'N/A';
-                return `<li class="flex justify-between">
-                            <span>${team.team} (${playerName})</span>
+                const teamLogo = getTeamLogoHtml(team.team, 'w-4 h-4');
+                return `<li class="flex justify-between items-center">
+                            <span class="flex items-center">${teamLogo} ${team.team} (${playerName})</span>
                            
- 
-  <span class="font-bold text-indigo-600">${team.GA}</span>
+  <span class="font-bold text-pl-highlight">${team.GA}</span>
                         </li>`;
             }).join('');
- // Misc Stats
+            // Misc Stats
             const totalMatches = standings.reduce((sum, t) => sum + t.P, 0) / 2;
- const totalGoals = standings.reduce((sum, t) => sum + t.GF, 0);
+            const totalGoals = standings.reduce((sum, t) => sum + t.GF, 0);
             const avgGoals = totalMatches > 0 ?
- (totalGoals / totalMatches).toFixed(2) : 0;
+            (totalGoals / totalMatches).toFixed(2) : 0;
 
             statsMisc.innerHTML = `
                 <p>Total Matches Played: <span class="font-semibold">${totalMatches}</span></p>
                 <p>Total Goals Scored: <span class="font-semibold">${totalGoals}</span></p>
                 <p>Average Goals Per Match: <span class="font-semibold">${avgGoals}</span></p>
             `;
- };
+        };
         
         // --- REALTIME DATABASE LISTENER ---
 
@@ -1089,7 +1045,6 @@ Brentford : @asim</textarea>
                 
                 // CRITICAL FIX: Update the global tournamentData first
         
- 
          tournamentData = data;
                 
                 if (data) {
@@ -1102,41 +1057,38 @@ Brentford : @asim</textarea>
                     renderFixtures(data);
                     renderPointsTable(standings, data.players);
               
-                 
      
                     // Render Admin Panel Status (if logged in or if admin tab is active)
                     if (isAdmin || currentTab === 'admin') {
                          renderAdminManagementPanel(data);
          
-             
          }
                     
                     // Only re-render stats if the stats tab is active
                     if (currentTab === 'stats') {
                
-                     
       renderStats(standings, data.players);
  }
                 } else {
                     // Handle case where database is empty (tournament deleted)
                     
                     renderFixtures(null);
- renderPointsTable([]);
+                    renderPointsTable([]);
                     
                     if (isAdmin || currentTab === 'admin') {
                          renderAdminManagementPanel(null);
- // Show 'No Active Tournament'
+                        // Show 'No Active Tournament'
                     }
                     if (currentTab === 'stats') {
                         renderStats([]);
- }
+                    }
                 }
             }, (error) => {
                 console.error("Realtime database error:", error);
- alert("Could not connect to the database. Check console.");
+                alert("Could not connect to the database. Check console.");
             });
         };
- // --- START APP ---
+        // --- START APP ---
         initializeApp();
         setupRealtimeListener();
 
