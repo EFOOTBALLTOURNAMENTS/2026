@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFOOTBALL CHAMPIONSHIP PAKISTAN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #3b82f6; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background-color: #e5e7eb; }
+        .tab-button {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* --- NEW SPLASH SCREEN STYLE --- */
+        .el-clasico-bg {
+            /* !!! IMPORTANT: REPLACE THIS URL WITH YOUR EL CLASICO BANNER IMAGE URL !!! */
+            background-image: url('https://i.postimg.cc/6qGS3F6v/images-3-1.jpg');
+            background-size: cover; /* Ensures the image covers the entire screen */
+            background-position: center; /* Centers the image */
+        }
+        /* Optional: Add a subtle overlay to make the text stand out */
+        .el-clasico-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <div id="splash-screen" class="fixed inset-0 el-clasico-bg flex items-center justify-center z-[100] transition-opacity duration-1000">
+        <div class="text-center p-8 rounded-xl bg-black bg-opacity-70 shadow-2xl relative z-10">
+            <i class="ph-fill ph-trophy text-8xl text-yellow-400 animate-pulse"></i>
+            <h1 class="text-6xl font-black text-white mt-4 tracking-widest">EFOOTBALL</h1>
+            <h2 class="text-2xl font-semibold text-red-500 mt-2">CHAMPIONSHIP PAKISTAN</h2>
+            <p class="text-md text-gray-300 mt-6">ORGANIZED BY SANA ULLAH</p>
+        </div>
+    </div>
+
+    <div id="main-app" class="hidden max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <header class="flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-xl shadow-lg mb-6 sticky top-4 z-40">
+            <h1 class="text-2xl sm:text-3xl font-bold text-indigo-600 flex items-center">
+                <i class="ph-bold ph-trophy-light text-4xl mr-2"></i>
+                <span class="hidden sm:inline">EFOOTBALL 2026 BY SANA ULLAH
+                </span>
+                <span class="sm:hidden">EFC PAK BY SANA ULLAH 
+                </span>
+            </h1>
+            <div id="auth-status" class="text-sm mt-2 sm:mt-0 text-gray-500 flex items-center">
+                <i id="user-icon" class="ph-bold ph-user-circle text-xl mr-1 text-gray-400"></i>
+                <span id="user-display">Guest</span>
+            </div>
+        </header>
+
+        <nav class="bg-white p-1 rounded-xl shadow-md mb-6 sticky top-[80px] z-30">
+            <div class="flex flex-wrap justify-around text-center">
+                <div data-tab="admin" class="tab-button flex-1 py-3 px-2 rounded-lg text-red-600 font-semibold text-sm sm:text-base border-2 border-transparent">
+                    <i class="ph-bold ph-lock mr-1"></i> ADMIN
+                </div>
+                <div data-tab="fixtures" class="tab-button flex-1 py-3 px-2 rounded-lg text-indigo-600 font-semibold text-sm sm:text-base bg-indigo-100 border-2 border-indigo-500">
+                    <i class="ph-bold ph-calendar-blank mr-1"></i> FIXTURES
+                </div>
+                <div data-tab="points" class="tab-button flex-1 py-3 px-2 rounded-lg text-indigo-600 font-semibold text-sm sm:text-base">
+                    <i class="ph-bold ph-table mr-1"></i> POINTS TABLE
+                </div>
+                <div data-tab="stats" class="tab-button flex-1 py-3 px-2 rounded-lg text-indigo-600 font-semibold text-sm sm:text-base">
+                    <i class="ph-bold ph-chart-bar mr-1"></i> STATS
+                </div>
+            </div>
+        </nav>
+
+        <div id="tab-content" class="space-y-6">
+
+            <div id="admin" class="tab-pane space-y-6 hidden">
+                <div id="admin-auth-panel" class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold text-red-700 mb-4 border-b pb-2 flex items-center">
+                        <i class="ph-bold ph-lock-key text-2xl mr-2 text-red-500"></i> Admin Access
+                    </h2>
+                    <form id="admin-auth-form" class="space-y-3">
+                        <input type="password" id="admin-password" placeholder="Enter Admin Password" required
+                            class="block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+                        <button type="submit"
+                            class="w-full px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-150">
+                            Unlock Admin Panel
+                        </button>
+                        <div id="admin-auth-message" class="text-sm mt-2 text-center text-red-500"></div>
+                    </form>
+                </div>
+
+                <div id="admin-panel" class="space-y-6 hidden">
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-red-700 mb-4 border-b pb-2 flex items-center">
+                            <i class="ph-bold ph-calendar-check mr-2"></i> Organize Ongoing Tournaments
+                        </h3>
+                        <div id="current-tournament-status" class="space-y-4">
+                            <div class="text-center py-6 text-gray-500">Loading tournament status...</div>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-red-700 mb-4 border-b pb-2">Start New Tournament</h3>
+                        <form id="start-tournament-form" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Matches Per Team</label>
+                                    <input type="number" id="num-rounds" required value="2" min="1"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+                                    <p class="text-xs text-gray-500 mt-1">Total rounds will be (Teams - 1) * N</p>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Teams Count (Even, min 4)</label>
+                                    <input type="number" id="teams-count" required value="16" min="4" step="2"
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Tournament Start Date</label>
+                                    <input type="date" id="start-date" required
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Tournament End Date</label>
+                                    <input type="date" id="end-date" required
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+                                </div>
+                            </div>
+
+                            <label class="block text-sm font-medium text-gray-700 pt-2">Team & Player Assignment (Team name : Player Name)</label>
+                            <textarea id="teams-and-players" rows="16" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:border-red-500 focus:ring-red-500">
+Arsenal : Sana Ullah
+Manchester City : Admin Player
+Liverpool : Member 1
+Aston Villa : Member 2
+Tottenham Hotspur : Member 3
+Chelsea : Member 4
+Newcastle United : Member 5
+Manchester United : Member 6
+West Ham United : Member 7
+Crystal Palace : Member 8
+Brighton & Hove Albion : Member 9
+AFC Bournemouth : Member 10
+Wolverhampton Wanderers : Member 11
+Fulham : Member 12
+Nottingham Forest : Member 13
+Brentford : Member 14</textarea>
+                            <p class="text-xs text-gray-500">Ensure the number of lines matches the Teams Count above.</p>
+
+                            <button type="submit"
+                                class="w-full px-4 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-150 flex items-center justify-center">
+                                <i class="ph-bold ph-calendar-plus text-xl mr-2"></i> GENERATE FIXTURES & START
+                            </button>
+                            <div id="start-message" class="text-sm mt-2 text-center text-red-500"></div>
+                        </form>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-red-700 mb-4 border-b pb-2">Upload Match Results</h3>
+                        <div id="admin-results-content">
+                            <div class="text-center py-6 text-gray-500">
+                                Select an active tournament above to load results panel.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fixtures" class="tab-pane space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold text-indigo-700 mb-4 border-b pb-2 flex items-center">
+                        <i class="ph-bold ph-calendar-check text-2xl mr-2 text-indigo-500"></i> Ongoing Matchday Fixtures
+                    </h2>
+                    <div id="fixtures-content">
+                        <div class="text-center py-6 text-gray-500">
+                            Tournament fixtures will appear here once the schedule is generated.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="points" class="tab-pane space-y-6 hidden">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold text-indigo-700 mb-4 border-b pb-2 flex items-center">
+                        <i class="ph-bold ph-list-numbers text-2xl mr-2 text-indigo-500"></i> Official Points Table
+                    </h2>
+                    <div id="points-table-content" class="overflow-x-auto">
+                        <div class="text-center py-6 text-gray-500">
+                            Upload results in the Admin tab to populate the points table.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stats" class="tab-pane space-y-6 hidden">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold text-indigo-700 mb-4 border-b pb-2 flex items-center">
+                        <i class="ph-bold ph-chart-line text-2xl mr-2 text-indigo-500"></i> League Statistics
+                    </h2>
+                    <div id="stats-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div id="top-scorers" class="bg-indigo-50 p-4 rounded-lg shadow-inner">
+                            <h4 class="font-bold text-indigo-700 mb-2 border-b pb-1">Top Goalscorers (GF)</h4>
+                            <ul id="scorers-list" class="space-y-1 text-gray-700"></ul>
+                        </div>
+                        <div id="top-defense" class="bg-indigo-50 p-4 rounded-lg shadow-inner">
+                            <h4 class="font-bold text-indigo-700 mb-2 border-b pb-1">Best Defense (GA)</h4>
+                            <ul id="defense-list" class="space-y-1 text-gray-700"></ul>
+                        </div>
+                    </div>
+                    <div id="stats-misc" class="text-center pt-6 text-sm text-gray-500"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <script>
+        // --- CONSTANTS & FIREBASE SETUP ---
+        const ADMIN_PASSWORD = "EFOOTBALL2026";
+        
+        // YOUR EMBEDDED FIREBASE CONFIGURATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKXE_sklR_wpRYUaV-l7jZFHbEOhN0GZU",
+            authDomain: "efootball-2026.firebaseapp.com",
+            databaseURL: "https://efootball-2026-default-rtdb.firebaseio.com",
+            projectId: "efootball-2026",
+            storageBucket: "efootball-2026.firebasestorage.app",
+            messagingSenderId: "189433778137",
+            appId: "1:189433778137:web:10517370da0990108d93c8",
+            measurementId: "G-3ZQ3KGXPFG"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = app.database();
+        const tournamentRef = database.ref('tournament/settings');
+
+        let isAdmin = false; 
+        let currentTab = 'fixtures';
+        let tournamentData = null; // Stores latest tournament data
+
+        // --- UTILITY FUNCTIONS ---
+
+        const showMessage = (elementId, message, isError = true) => {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            el.textContent = message;
+            el.className = `text-sm mt-2 text-center ${isError ? 'text-red-500' : 'text-green-500'}`;
+            setTimeout(() => el.textContent = '', 5000);
+        };
+        
+        const getDatesBetween = (start, end) => {
+            const dates = [];
+            let currentDate = new Date(start);
+            const endDate = new Date(end);
+            // Ensure start date is valid
+            if (isNaN(currentDate.getTime()) || isNaN(endDate.getTime())) return dates;
+            
+            while (currentDate <= endDate) {
+                dates.push(currentDate.toISOString().split('T')[0]);
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            return dates;
+        };
+        
+        // --- APP INITIALIZATION ---
+
+        const initializeApp = () => {
+            // Set default dates
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('start-date').value = today;
+            const threeMonthsLater = new Date();
+            threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
+            document.getElementById('end-date').value = threeMonthsLater.toISOString().split('T')[0];
+            
+            // Set default teams count
+            document.getElementById('teams-count').value = 16;
+
+
+            // Setup Event Listeners
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
+            });
+            document.getElementById('admin-auth-form').addEventListener('submit', handleAdminAuth);
+            document.getElementById('start-tournament-form').addEventListener('submit', handleStartTournament);
+
+            // Hide splash screen and show main app after a delay (6000ms = 6 seconds)
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('splash-screen').classList.add('hidden');
+                    document.getElementById('main-app').classList.remove('hidden');
+                }, 1000);
+            }, 6000); // 6 seconds delay
+        };
+
+        // --- TAB NAVIGATION ---
+
+        const switchTab = (tabName) => {
+            currentTab = tabName;
+            
+            // Update buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                const isSelected = btn.getAttribute('data-tab') === tabName;
+                const isRedTab = btn.getAttribute('data-tab') === 'admin';
+                
+                // Reset classes
+                btn.classList.remove('bg-indigo-100', 'border-indigo-500', 'bg-red-600', 'text-white', 'text-indigo-600', 'text-red-600');
+                btn.classList.add('border-2');
+
+                if (isSelected) {
+                    if (isRedTab) {
+                        btn.classList.add('bg-red-600', 'text-white', 'border-red-500');
+                    } else {
+                        btn.classList.add('bg-indigo-100', 'text-indigo-600', 'border-indigo-500');
+                    }
+                } else {
+                    btn.classList.add('border-transparent');
+                    if (isRedTab) {
+                        btn.classList.add('text-red-600');
+                    } else {
+                        btn.classList.add('text-indigo-600');
+                    }
+                }
+            });
+
+            // Update content panes
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.toggle('hidden', pane.id !== tabName);
+            });
+            
+            // Re-render admin results and management if switching to admin
+            if (tabName === 'admin' && isAdmin) {
+                renderAdminManagementPanel(tournamentData); // Rerender management panel
+                renderAdminResultsContent(tournamentData); // Rerender results panel
+            }
+            
+            // Re-render stats if switching to stats
+            if (tabName === 'stats' && tournamentData) {
+                const standings = calculateStandings(tournamentData.teams, tournamentData.schedule);
+                renderStats(standings, tournamentData.players);
+            }
+        };
+
+        // --- ADMIN AUTHENTICATION ---
+
+        const handleAdminAuth = (e) => {
+            e.preventDefault();
+            const password = document.getElementById('admin-password').value;
+            if (password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                document.getElementById('admin-auth-panel').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                document.getElementById('user-icon').classList.replace('text-gray-400', 'text-red-600');
+                document.getElementById('user-display').textContent = `Admin User`;
+                showMessage('admin-auth-message', 'Admin access granted!', false);
+                // Call render functions immediately after login
+                renderAdminManagementPanel(tournamentData); 
+                renderAdminResultsContent(tournamentData);
+            } else {
+                isAdmin = false;
+                showMessage('admin-auth-message', 'Incorrect password. Access denied.', true);
+            }
+        };
+        
+        // --- TOURNAMENT SCHEDULE GENERATION (Standard Round Robin) ---
+
+        const generateRoundRobin = (teamNames, numRounds, startDateStr, endDateStr) => {
+            let n = teamNames.length;
+            if (n % 2 !== 0) n++;
+            let teams = [...teamNames];
+            while (teams.length < n) { teams.push('BYE'); } // Pad with BYE if odd
+
+            const schedule = [];
+            const totalRoundRobinRounds = n - 1;
+            const totalLeagueRounds = totalRoundRobinRounds * numRounds;
+            const half = n / 2;
+            const allMatchDays = getDatesBetween(startDateStr, endDateStr);
+            const matchDayInterval = Math.max(1, Math.floor(allMatchDays.length / totalLeagueRounds));
+            
+            let dateIndex = 0;
+            let fixtureCounter = 0;
+
+            for (let r = 1; r <= numRounds; r++) {
+                // Determine if we should flip the home/away teams for this round block
+                const isFlippedRoundBlock = r % 2 === 0; 
+                
+                let currentTeams = [...teams];
+                
+                for (let round = 1; round <= totalRoundRobinRounds; round++) {
+                    const leagueRoundNumber = (r - 1) * totalRoundRobinRounds + round;
+                    const roundMatches = [];
+                    
+                    for (let i = 0; i < half; i++) {
+                        const home = currentTeams[i];
+                        const away = currentTeams[i + half];
+
+                        if (home !== 'BYE' && away !== 'BYE') {
+                            
+                            // Combine flipping: flip if r is even.
+                            const [team1, team2] = isFlippedRoundBlock ? [away, home] : [home, away];
+                            
+                            roundMatches.push({
+                                id: `${leagueRoundNumber}-${fixtureCounter++}`,
+                                home: team1,
+                                away: team2,
+                                homeScore: null,
+                                awayScore: null,
+                            });
+                        }
+                    }
+
+                    // Assign date
+                    const date = allMatchDays[dateIndex] || allMatchDays[allMatchDays.length - 1];
+                    if (dateIndex < allMatchDays.length) {
+                        dateIndex += matchDayInterval;
+                    }
+
+                    schedule.push({ 
+                        round: leagueRoundNumber, 
+                        date: date, 
+                        matches: roundMatches 
+                    });
+
+                    // Rotate teams (Fixed team[0], rotate the rest)
+                    if (currentTeams.length > 2) {
+                        const fixedTeam = currentTeams[0];
+                        const last = currentTeams.pop();
+                        currentTeams.splice(1, 0, last);
+                        currentTeams[0] = fixedTeam; // Keep the first team fixed after rotation
+                    }
+                }
+            }
+            return schedule;
+        };
+        
+        const handleStartTournament = async (e) => {
+            e.preventDefault();
+            if (!isAdmin) { showMessage('start-message', 'Admin privileges required.', true); return; }
+
+            const teamsCount = parseInt(document.getElementById('teams-count').value);
+            const numRounds = parseInt(document.getElementById('num-rounds').value);
+            const startDateStr = document.getElementById('start-date').value;
+            const endDateStr = document.getElementById('end-date').value;
+            const playerInput = document.getElementById('teams-and-players').value.trim().split('\n');
+
+            const teams = [];
+            const players = {};
+            playerInput.forEach(line => {
+                const [team, player] = line.split(':').map(s => s.trim());
+                if (team && player) {
+                    teams.push(team);
+                    players[team] = player;
+                }
+            });
+
+            if (teams.length !== teamsCount || teamsCount < 4 || teamsCount % 2 !== 0) {
+                showMessage('start-message', 'Teams count must be even (min 4) and match the input list size.', true);
+                return;
+            }
+            
+            const schedule = generateRoundRobin(teams, numRounds, startDateStr, endDateStr);
+
+            const tournamentDataToSave = {
+                teams: teams,
+                players: players,
+                numRoundsPerTeam: numRounds,
+                startDate: startDateStr,
+                endDate: endDateStr,
+                schedule: schedule, // Save as object/array for Realtime DB
+                organizerId: "ADMIN_USER", // Simple placeholder
+                lastUpdated: new Date().toISOString()
+            };
+
+            try {
+                // Realtime Database 'set' function
+                await tournamentRef.set(tournamentDataToSave);
+                showMessage('start-message', `Tournament started with ${schedule.length} matchdays!`, false);
+                switchTab('fixtures'); // Move to fixtures tab after creation
+            } catch (error) {
+                console.error("Error saving tournament data:", error);
+                showMessage('start-message', 'Failed to save tournament data. Check console.', true);
+            }
+        };
+        
+        // --- TOURNAMENT DELETION LOGIC ---
+        const handleDeleteTournament = async () => {
+             if (!isAdmin) return;
+
+             const confirmation = confirm("Are you sure you want to delete the entire tournament and all results? This action cannot be undone.");
+
+             if (confirmation) {
+                 try {
+                     await tournamentRef.remove();
+                     // Data will be reset via the listener
+                     showMessage('current-tournament-status', 'Tournament successfully deleted!', false);
+                 } catch (error) {
+                     console.error("Error deleting tournament:", error);
+                     showMessage('current-tournament-status', 'Failed to delete tournament. Check console.', true);
+                 }
+             }
+        }
+
+
+        // --- RESULTS UPLOAD LOGIC ---
+
+        const handleResultUpdate = async (e) => {
+            e.preventDefault();
+            if (!isAdmin || !tournamentData) return;
+
+            const form = e.currentTarget;
+            const matchId = form.getAttribute('data-match-id');
+            const homeScore = parseInt(form.querySelector('.score-input-home').value);
+            const awayScore = parseInt(form.querySelector('.score-input-away').value);
+
+            if (isNaN(homeScore) || isNaN(awayScore)) {
+                alert('Scores must be valid numbers.');
+                return;
+            }
+            
+            try {
+                // Find and update the match in the local copy of the schedule
+                let found = false;
+                const newSchedule = tournamentData.schedule.map(round => ({
+                    ...round,
+                    matches: round.matches.map(match => {
+                        if (match.id === matchId) {
+                            match.homeScore = homeScore;
+                            match.awayScore = awayScore;
+                            found = true;
+                        }
+                        return match;
+                    })
+                }));
+
+                if (found) {
+                    // Update the entire 'schedule' node in the database
+                    await tournamentRef.update({
+                        schedule: newSchedule,
+                        lastUpdated: new Date().toISOString()
+                    });
+
+                    // Small visual feedback on the button
+                    const btn = form.querySelector('button[type="submit"]');
+                    btn.innerHTML = `<i class="ph-bold ph-check text-lg"></i>`;
+                    btn.classList.replace('bg-red-600', 'bg-green-600');
+                    setTimeout(() => {
+                        btn.innerHTML = `<i class="ph-bold ph-floppy-disk text-lg"></i>`;
+                        btn.classList.replace('bg-green-600', 'bg-red-600');
+                    }, 1000);
+                } else {
+                    throw "Match ID not found in schedule.";
+                }
+            } catch (error) {
+                console.error("Failed to update match result:", error);
+                alert('Failed to save result. Check console.');
+            }
+        };
+
+        // --- STANDINGS & STATS CALCULATIONS ---
+
+        const calculateStandings = (teams, scheduleData) => {
+            const standings = {};
+            teams.forEach(team => {
+                standings[team] = {
+                    team: team, P: 0, W: 0, D: 0, L: 0, GF: 0, GA: 0, GD: 0, Pts: 0
+                };
+            });
+
+            if (!scheduleData) return [];
+
+            scheduleData.forEach(round => {
+                round.matches.forEach(match => {
+                    const homeTeam = match.home;
+                    const awayTeam = match.away;
+                    const homeScore = parseInt(match.homeScore);
+                    const awayScore = parseInt(match.awayScore);
+
+                    if (isNaN(homeScore) || isNaN(awayScore) || !standings[homeTeam] || !standings[awayTeam]) return;
+
+                    const home = standings[homeTeam];
+                    const away = standings[awayTeam];
+                    
+                    // Games Played (P)
+                    home.P++; away.P++;
+
+                    // Goals For/Against
+                    home.GF += homeScore; home.GA += awayScore;
+                    away.GF += awayScore; away.GA += homeScore;
+
+                    // Results and Points
+                    if (homeScore > awayScore) {
+                        home.W++; home.Pts += 3; away.L++;
+                    } else if (homeScore < awayScore) {
+                        away.W++; away.Pts += 3; home.L++;
+                    } else {
+                        home.D++; home.Pts += 1; away.D++; away.Pts += 1;
+                    }
+                });
+            });
+
+            // Calculate Goal Difference (GD)
+            Object.values(standings).forEach(team => {
+                team.GD = team.GF - team.GA;
+            });
+
+            // Sort by Pts (desc), then GD (desc), then GF (desc)
+            return Object.values(standings).sort((a, b) => 
+                b.Pts - a.Pts || b.GD - a.GD || b.GF - a.GF
+            );
+        };
+        
+        // --- RENDERING FUNCTIONS ---
+        
+        const renderAdminManagementPanel = (tournament) => {
+             const container = document.getElementById('current-tournament-status');
+             
+             if (!tournament) {
+                 container.innerHTML = `
+                     <div class="p-4 bg-red-100 border-l-4 border-red-500 text-red-700">
+                         <p class="font-bold">No Active Tournament</p>
+                         <p class="text-sm">Use the 'Start New Tournament' section below to create a schedule.</p>
+                     </div>
+                 `;
+                 
+                 // Also ensure the results content is reset if no tournament is active
+                 document.getElementById('admin-results-content').innerHTML = '<div class="text-center py-6 text-gray-500">Generate a schedule above to start uploading results.</div>';
+
+                 return;
+             }
+             
+             const standings = calculateStandings(tournament.teams, tournament.schedule);
+             const matchesPlayed = standings.reduce((sum, t) => sum + t.P, 0) / 2;
+             const totalMatches = tournament.schedule.reduce((sum, r) => sum + r.matches.length, 0);
+             const progress = totalMatches > 0 ? ((matchesPlayed / totalMatches) * 100).toFixed(0) : 0;
+             const firstPlace = standings.length > 0 ? standings[0].team : 'N/A';
+
+
+             container.innerHTML = `
+                 <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                     <p class="font-bold text-green-700 flex items-center mb-2">
+                        <i class="ph-bold ph-calendar-check text-xl mr-2"></i> Active Tournament (EFOOTBALL 2026)
+                     </p>
+                     <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+                         <p><strong>Teams:</strong> ${tournament.teams.length}</p>
+                         <p><strong>Rounds:</strong> ${tournament.numRoundsPerTeam}</p>
+                         <p><strong>Matches:</strong> ${matchesPlayed} / ${totalMatches}</p>
+                         <p><strong>Leader:</strong> ${firstPlace}</p>
+                         <p class="col-span-2"><strong>Dates:</strong> ${tournament.startDate} to ${tournament.endDate}</p>
+                     </div>
+                     <div class="w-full bg-gray-200 rounded-full h-2.5 mt-3">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: ${progress}%"></div>
+                     </div>
+                     <p class="text-xs text-center text-gray-500 mt-1">${progress}% Complete</p>
+                 </div>
+                 <div class="flex justify-center mt-4">
+                     <button id="delete-tournament-btn" 
+                        class="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition duration-150 flex items-center">
+                        <i class="ph-bold ph-trash-simple text-lg mr-2"></i> Delete Tournament
+                     </button>
+                 </div>
+             `;
+             
+             document.getElementById('delete-tournament-btn').addEventListener('click', handleDeleteTournament);
+             
+             // After rendering the management panel, ensure the results panel is loaded too
+             renderAdminResultsContent(tournament);
+
+        }
+
+        const renderAdminResultsContent = (tournament) => {
+            const container = document.getElementById('admin-results-content');
+            
+            if (!isAdmin || !tournament || !tournament.schedule) {
+                 container.innerHTML = '<div class="text-center py-6 text-gray-500">Generate a schedule above to start uploading results.</div>';
+                 return;
+            }
+
+            const scheduleData = tournament.schedule;
+            let html = '';
+
+            scheduleData.forEach(round => {
+                html += `
+                    <div class="bg-red-50 p-3 rounded-lg mt-4 shadow-inner">
+                        <h4 class="text-md font-bold text-red-700 mb-3">Matchday ${round.round} (${round.date})</h4>
+                        <div class="space-y-2">
+                `;
+                round.matches.forEach(match => {
+                    const homeScore = match.homeScore === null ? '' : match.homeScore;
+                    const awayScore = match.awayScore === null ? '' : match.awayScore;
+                    
+                    html += `
+                        <form data-match-id="${match.id}" class="match-update-form flex items-center space-x-2 bg-white p-2 rounded-md border border-red-200">
+                            <div class="font-semibold text-gray-800 w-1/3 truncate">${match.home}</div>
+                            <input type="number" min="0" value="${homeScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-home focus:border-red-500">
+                            <span class="font-bold text-red-600">-</span>
+                            <input type="number" min="0" value="${awayScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-away focus:border-red-500">
+                            <div class="font-semibold text-gray-800 w-1/3 text-right truncate">${match.away}</div>
+                            <button type="submit" class="p-1 bg-red-600 text-white rounded-md text-sm hover:bg-red-700 transition" title="Save Score">
+                                <i class="ph-bold ph-floppy-disk text-lg"></i>
+                            </button>
+                        </form>
+                    `;
+                });
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+            container.querySelectorAll('.match-update-form').forEach(form => {
+                form.addEventListener('submit', handleResultUpdate);
+            });
+        };
+
+        const renderFixtures = (tournament) => {
+            const container = document.getElementById('fixtures-content');
+            if (!tournament || !tournament.schedule || tournament.schedule.length === 0) {
+                container.innerHTML = '<div class="text-center py-6 text-gray-500">Tournament fixtures will appear here once the schedule is generated.</div>';
+                return;
+            }
+            
+            const scheduleData = tournament.schedule;
+            let html = '';
+            
+            scheduleData.forEach(round => {
+                html += `
+                    <div class="bg-indigo-50 p-4 rounded-lg mt-4 shadow-inner">
+                        <h4 class="text-lg font-bold text-indigo-700 mb-3">Matchday ${round.round} (${round.date})</h4>
+                        <div class="space-y-2">
+                `;
+                round.matches.forEach(match => {
+                    const scoreDisplay = match.homeScore !== null ? 
+                        `<span class="font-bold">${match.homeScore} - ${match.awayScore}</span>` : 
+                        '<span class="text-gray-500 italic">vs</span>';
+                        
+                    html += `
+                        <div class="flex justify-between items-center bg-white p-3 rounded-md shadow-sm border border-indigo-200">
+                            <div class="font-semibold text-gray-800 w-1/3 truncate">${match.home}</div>
+                            <div class="w-1/3 text-center">${scoreDisplay}</div>
+                            <div class="font-semibold text-gray-800 w-1/3 text-right truncate">${match.away}</div>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+        };
+
+        const renderPointsTable = (standings, players) => {
+            const container = document.getElementById('points-table-content');
+            if (standings.length === 0) {
+                container.innerHTML = '<div class="text-center py-6 text-gray-500">Upload results in the Admin tab to populate the points table.</div>';
+                return;
+            }
+            
+            const header = `
+                <table class="min-w-full divide-y divide-gray-200 shadow overflow-hidden sm:rounded-lg">
+                    <thead class="bg-indigo-600 text-white">
+                        <tr>
+                            <th class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">#</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Team (Player)</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider">P</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden sm:table-cell">W</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden sm:table-cell">D</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden sm:table-cell">L</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden md:table-cell">GF</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider hidden md:table-cell">GA</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider">GD</th>
+                            <th class="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider">Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200" id="table-body">
+            `;
+            
+            let rows = '';
+            standings.forEach((team, index) => {
+                const rankClass = index < 2 ? 'bg-yellow-100 font-bold' : 'bg-white';
+                const playerName = players[team.team] || 'N/A';
+                rows += `
+                    <tr class="${rankClass}">
+                        <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">${index + 1}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            ${team.team} <span class="text-gray-500 text-xs block sm:inline">(${playerName})</span>
+                        </td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center">${team.P}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden sm:table-cell">${team.W}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden sm:table-cell">${team.D}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden sm:table-cell">${team.L}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden md:table-cell">${team.GF}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden md:table-cell">${team.GA}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-bold">${team.GD > 0 ? '+' : ''}${team.GD}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-extrabold text-indigo-700">${team.Pts}</td>
+                    </tr>
+                `;
+            });
+
+            container.innerHTML = header + rows + '</tbody></table>';
+        };
+
+        const renderStats = (standings, players) => {
+            const scorersList = document.getElementById('scorers-list');
+            const defenseList = document.getElementById('defense-list');
+            const statsMisc = document.getElementById('stats-misc');
+            
+            if (standings.length === 0) {
+                scorersList.innerHTML = '<li>No stats available yet.</li>';
+                defenseList.innerHTML = '<li>No stats available yet.</li>';
+                statsMisc.textContent = 'Data will populate after match results are entered.';
+                return;
+            }
+
+            // Top Scorers (Sort by GF desc)
+            const topScorers = [...standings].sort((a, b) => b.GF - a.GF).slice(0, 5);
+            scorersList.innerHTML = topScorers.map(team => {
+                const playerName = players[team.team] || 'N/A';
+                return `<li class="flex justify-between">
+                            <span>${team.team} (${playerName})</span>
+                            <span class="font-bold text-indigo-600">${team.GF}</span>
+                        </li>`;
+            }).join('');
+
+            // Best Defense (Sort by GA asc)
+            const bestDefense = [...standings].sort((a, b) => a.GA - b.GA).slice(0, 5);
+            defenseList.innerHTML = bestDefense.map(team => {
+                const playerName = players[team.team] || 'N/A';
+                return `<li class="flex justify-between">
+                            <span>${team.team} (${playerName})</span>
+                            <span class="font-bold text-indigo-600">${team.GA}</span>
+                        </li>`;
+            }).join('');
+
+            // Misc Stats
+            const totalMatches = standings.reduce((sum, t) => sum + t.P, 0) / 2;
+            const totalGoals = standings.reduce((sum, t) => sum + t.GF, 0);
+            const avgGoals = totalMatches > 0 ? (totalGoals / totalMatches).toFixed(2) : 0;
+
+            statsMisc.innerHTML = `
+                <p>Total Matches Played: <span class="font-semibold">${totalMatches}</span></p>
+                <p>Total Goals Scored: <span class="font-semibold">${totalGoals}</span></p>
+                <p>Average Goals Per Match: <span class="font-semibold">${avgGoals}</span></p>
+            `;
+        };
+        
+        // --- REALTIME DATABASE LISTENER ---
+
+        const setupRealtimeListener = () => {
+            tournamentRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                
+                // CRITICAL FIX: Update the global tournamentData first
+                tournamentData = data;
+                
+                if (data) {
+                    // Calculations are done on the client side based on the latest data
+                    const standings = calculateStandings(data.teams, data.schedule);
+                    
+                    // Render public tabs
+                    renderFixtures(data);
+                    renderPointsTable(standings, data.players);
+                    
+                    // Render Admin Panel Status (if logged in or if admin tab is active)
+                    if (isAdmin || currentTab === 'admin') {
+                         renderAdminManagementPanel(data);
+                    }
+                    
+                    // Only re-render stats if the stats tab is active
+                    if (currentTab === 'stats') {
+                        renderStats(standings, data.players);
+                    }
+                } else {
+                    // Handle case where database is empty (tournament deleted)
+                    
+                    renderFixtures(null);
+                    renderPointsTable([]);
+                    
+                    if (isAdmin || currentTab === 'admin') {
+                         renderAdminManagementPanel(null); // Show 'No Active Tournament'
+                    }
+                    if (currentTab === 'stats') {
+                        renderStats([]);
+                    }
+                }
+            }, (error) => {
+                console.error("Realtime database error:", error);
+                alert("Could not connect to the database. Check console.");
+            });
+        };
+
+
+        // --- START APP ---
+        initializeApp();
+        setupRealtimeListener();
+
+    </script>
+</body>
+</html>
