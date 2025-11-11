@@ -750,7 +750,7 @@ Brentford : @asim
             }
             
             // 2. Generate Group Stage Matches (Round Robin in each group)
-            let currentLeagueRound = 0;
+            // Removed currentLeagueRound = 0;
             let groupStageSchedule = [];
             
             for (const groupName in groups) {
@@ -759,24 +759,32 @@ Brentford : @asim
                 const matches = generateRoundRobinMatches(groupTeams, 0, 1);
                 
                 matches.forEach(round => {
-                    round.matches.forEach(match => match.group = groupName);
+                    // FIX: Make match ID unique by incorporating the group name
+                    round.matches.forEach(match => {
+                        match.group = groupName;
+                        // Prefix the match ID with the group name (e.g., "Group_A_1-0")
+                        match.id = `${groupName.replace(/\s/g, '_')}_${match.id}`;
+                    });
                     
+                    // The round number for merging is just the round-robin round number (1, 2, 3...)
+                    const roundNumber = round.round;
                     // Check if a round for this number already exists (to merge matches from different groups)
-             
-                    const existingRound = groupStageSchedule.find(r => r.round === currentLeagueRound + round.round);
+                    const existingRound = groupStageSchedule.find(r => r.round === roundNumber);
+                    
+                    const matchesToUse = round.matches.filter(m => m.home && m.away);
+
                     if (existingRound) {
-                        existingRound.matches.push(...round.matches);
+                        // MERGE: Append matches to the existing round
+                        existingRound.matches.push(...matchesToUse);
                     } else {
-                
+                        // NEW ROUND: Create a new round object
                         groupStageSchedule.push({ 
-                            round: currentLeagueRound + round.round, 
-                            matches: round.matches.filter(m => m.home && m.away)
+                            round: roundNumber, 
+                            matches: matchesToUse
                         });
-  
                     }
                 });
-                // Update round counter based on max rounds in a group
-                currentLeagueRound = Math.max(currentLeagueRound, groupTeams.length - 1);
+                // NOTE: The incorrect currentLeagueRound update was removed from here.
             }
             
             // Sort group stage schedule by round number
@@ -787,6 +795,7 @@ Brentford : @asim
             // 3. Prepare Knockout Template
             let knockoutScheduleTemplate = [];
             let qualifyingTeamsCount;
+            // Determine the max round number from the group stage for the KO round starting point
             let koRoundCounter = groupStageDated.length > 0 ? groupStageDated[groupStageDated.length - 1].round : 0;
 
             if (teams.length >= 16) {
@@ -1196,7 +1205,7 @@ Brentford : @asim
         const getMatchWinner = (match) => { 
             if (!match || match.homeScore === null || match.awayScore === null) return null;
             if (match.homeScore > match.awayScore) return match.home;
-            if (match.awayScore > match.homeScore) return match.away;
+            if (match.awayScore > match.awayScore) return match.away;
             // Simple tie-breaker for KO stage if needed (e.g., higher seeded team wins) - currently not implemented. 
             return null; 
         };
@@ -1719,4 +1728,3 @@ Brentford : @asim
     </script>
 </body>
 </html>
-```eof
