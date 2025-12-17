@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,28 +10,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EFOOTBALL CHAMPIONSHIP BY SALMAN SYED</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;600;700;900&dishttps://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/100px-Premier_League_Logo.svg.pngplay=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;600;700;900&dishttps:/bg-ucl/upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/100px-}Premier_League_Logo.svg.pngplay=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
+ 
     <script>
         // Custom Tailwind config for Premier League colors
-        tailwind.config = {
-            theme: {
-          
-       extend: {
-                    colors: {
-                        'pl-dark': '#37003C', // PL Primary Dark Purple (Body Background)
-                        'pl-card': '#1a0d1e', // Very Dark Card Background
-          
-               'pl-accent': '#652d91', // A medium purple for highlights
-                        'pl-text': '#f4f4f4', // Off-white text
-                        'pl-highlight': '#982b8b', // Vibrant pink/purple for active tabs/buttons/accents
-                    
-     'pl-header-bar': '#5b1d5c', // Header/Table Bar Gradient Look
-                    }
-                }
+        // Replace the existing tailwind.config section
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'ucl-dark': '#001c4d',    // Deep Midnight Blue (Background)
+                'ucl-card': '#002b70',    // Slightly lighter blue (Cards)
+                'ucl-accent': '#cc',  // Cyan/Electric Blue (Highlights)
+                'ucl-text': '#00FFCC',    // White text
+                'ucl-highlight': '#005fcc', // Bright blue for buttons
+                'ucl-header-bar': 'linear-gradient(90deg, #87CEEB 0%, #005fcc 100%)', 
             }
         }
+    }
+}
     </script>
     
     <style>
@@ -38,7 +37,8 @@
  }
         .custom-scrollbar::-webkit-scrollbar { width: 8px;
  }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #982b8b; border-radius: 4px;
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: 
+b8b; border-radius: 4px;
  }
         .custom-scrollbar::-webkit-scrollbar-track { background-color: #1a0d1e;
  }
@@ -55,22 +55,24 @@
  }
 
         /* --- NEW STYLES FOR MAIN HEADER BACKGROUND --- */
-        .custom-header-bg {
-            background-image: url('https://i.postimg.cc/zGKLCjcD/Screenshot-20251110-193550-2.jpg');
- background-size: cover;
-            background-position: center;
-            background-color: '#37003C'; /* Fallback */
-            border-bottom: 2px solid #982b8b;
- }
+      /* Update these in your <style> section */
+.custom-header-bg, .section-header-bg {
+    background: linear-gradient(135deg, #87CEEB 0%, #005fcc 100%);
+    border-bottom: 2px solid #; /* Cyan border */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cc; /* Cyan scrollbar */
+}
         
         /* --- NEW CLASS FOR SECTION HEADERS (H2, H3, H4) --- */
         .section-header-bg {
-            background-image: url('https://i.postimg.cc/zGKLCjcD/Screenshot-20251110-193550-2.jpg');
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f3/Logo_UEFA_Champions_League.png');
  background-size: cover;
             background-position: center;
             background-color: '#37003C'; /* Fallback */
-            border-bottom: 2px solid #982b8b;
- }
+            border-bottom: 2px solid #87CEEB;
+ 
 
 
         /* --- SPLASH SCREEN STYLE --- */
@@ -93,18 +95,18 @@
  }
     </style>
 </head>
-<body class="bg-pl-dark min-h-screen text-pl-text">
+<body class="bg-ucl-dark min-h-screen text-ucl-text">
 
     <div id="splash-screen" class="fixed inset-0 el-clasico-bg flex items-center justify-center z-[100] transition-opacity duration-1000">
         <div class="text-center p-8 rounded-xl bg-black bg-opacity-70 shadow-2xl relative z-10">
             <img src="https://i.postimg.cc/yx6W4y1k/images.png" 
                  alt="Premier League Logo" 
-                 class="w-20 h-20 mx-auto text-pl-highlight animate-pulse filter drop-shadow-lg"
+                 class="w-20 h-20 mx-auto text-ucl-highlight animate-pulse filter drop-shadow-lg"
       
             style="filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);">
             
             <h1 class="text-6xl font-black text-white mt-4 tracking-widest">ECL</h1>
-            <h2 class="text-2xl font-semibold text-pl-highlight mt-2">EFOOTBALL CHAMPIONSHIP</h2>
+            <h2 class="text-2xl font-semibold text-ucl-highlight mt-2">EFOOTBALL CHAMPIONSHIP</h2>
             <p 
  class="text-md text-gray-300 mt-6">ORGANIZED BY SALMAN SYED</p>
         </div>
@@ -123,15 +125,15 @@
 
                 <span>ECL BY SALMAN SYED</span>
             </h1>
-            <div id="auth-status" class="text-sm mt-2 sm:mt-0 text-pl-text flex items-center">
+            <div id="auth-status" class="text-sm mt-2 sm:mt-0 text-ucl-text flex items-center">
      
-            <i id="user-icon" class="ph-bold ph-user-circle text-xl mr-1 text-pl-text"></i>
+            <i id="user-icon" class="ph-bold ph-user-circle text-xl mr-1 text-ucl-text"></i>
                 <span id="user-display">Guest</span>
         
   </div>
         </header>
 
-        <nav class="bg-pl-header-bar p-1 rounded-xl shadow-md mb-6 sticky top-[80px] z-30">
+        <nav class="bg-ucl-header-bar p-1 rounded-xl shadow-md mb-6 sticky top-[80px] z-30">
             <div class="flex flex-wrap justify-around text-center">
                 
  <div data-tab="admin" class="tab-button flex-1 py-3 px-2 rounded-lg text-white font-semibold text-sm sm:text-base border-2 border-transparent">
@@ -160,26 +162,26 @@
 
            
  <div id="admin" class="tab-pane space-y-6 hidden">
-                <div id="admin-auth-panel" class="bg-pl-card p-6 rounded-xl shadow-md">
+                <div id="admin-auth-panel" class="bg-ucl-card p-6 rounded-xl shadow-md">
               
        <h2 class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
-                        <i class="ph-bold ph-lock-key text-2xl mr-2 text-pl-highlight"></i> Admin Access
+                        <i class="ph-bold ph-lock-key text-2xl mr-2 text-ucl-highlight"></i> Admin Access
              
         </h2>
                     <form id="admin-auth-form" class="space-y-3">
             
     <input type="password" id="admin-password" placeholder="Enter Admin Password" required
-                            class="block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+                            class="block w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border focus:border-ucl-highlight focus:ring-ucl-highlight -dark text-ucl-text">
            
               <button type="submit"
                     
          class="w-full px-4 
- py-2 bg-pl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-pl-highlight/80 transition duration-150">
+ py-2 bg-ucl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-ucl-highlight/80 transition duration-150">
                             Unlock Admin Panel
                 
          </button>
                         <div id="admin-auth-message" class="text-sm 
- mt-2 text-center text-pl-highlight"></div>
+ mt-2 text-center text-ucl-highlight"></div>
          
             </form>
                 </div>
@@ -187,32 +189,32 @@
                 <div id="admin-panel" class="space-y-6 hidden">
       
                
-                    <div class="bg-pl-card 
+                    <div class="bg-ucl-card 
  p-6 rounded-xl shadow-md">
           
                <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
                            
-  <i class="ph-bold ph-calendar-check mr-2 text-pl-highlight"></i> Organize Ongoing Tournaments
+  <i class="ph-bold ph-calendar-check mr-2 text-ucl-highlight"></i> Organize Ongoing Tournaments
                         </h3>
        
      <div id="current-tournament-status" class="space-y-4">
-                            <div class="text-center py-6 text-pl-text">Loading tournament status...</div>
+                            <div class="text-center py-6 text-ucl-text">Loading tournament status...</div>
                      
     </div>
                     </div>
 
 
    
-    <div class="bg-pl-card p-6 rounded-xl shadow-md">
+    <div class="bg-ucl-card p-6 rounded-xl shadow-md">
                         <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg mb-4">Start New Tournament</h3>
                         <form id="start-tournament-form" class="space-y-4">
        
                              
                             <div>
-                                <label class="block text-sm font-medium text-pl-text">Tournament Type</label>
+                                <label class="block text-sm font-medium text-ucl-text">Tournament Type</label>
               
                    <select id="tournament-type"
-                                    class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+                                    class="mt-1 block w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border focus:border-ucl-highlight focus:ring-ucl-highlight bg-ucl-dark text-ucl-text">
                                   
    <option value="league">League Tournament (Full Round Robin)</option>
                                     <option value="group_knockout">Group Stage & Knockout</option>
@@ -225,10 +227,10 @@
    
                               <div id="league-rounds-container">
                           
-           <label class="block text-sm font-medium text-pl-text">Matches Per Team (League Rounds)</label>
+           <label class="block text-sm font-medium text-ucl-text">Matches Per Team (League Rounds)</label>
              
         <input type="number" id="num-rounds" required value="2" min="1"
-                                        class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+                                        class="mt-1 block w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border focus:border-ucl-highlight focus:ring-ucl-highlight bg-ucl-dark text-ucl-text">
      
                   
                <p class="text-xs text-gray-400 
@@ -236,55 +238,55 @@
                                 </div>
                         
          <div id="group-stage-options">
-                                    <label class="block text-sm font-medium text-pl-text">Number of Groups</label>
+                                    <label class="block text-sm font-medium text-ucll-text">Number of Groups</label>
                                     <input type="number" id="groups-count" required value="4" min="1" step="1"
        
-                                  class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+                                  class="mt-1 block w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border focus:border-ucl-highlight focus:ring-ucl-highlight bg-ucl-dark text-ucl-text">
                                     <p id="group-stage-info" class="text-xs text-gray-400 mt-1">E.g., 4 groups for 16 teams.
  Must be an even number.</p>
                                 </div>
                                 <div>
           
-         <label class="block text-sm font-medium text-pl-text">Teams Count (Even, min 4)</label>
+         <label class="block text-sm font-medium text-ucl-text">Teams Count (Even, min 4)</label>
      
                                 <input type="number" id="teams-count" required value="16" min="4" step="2"
                        
                   class="mt-1 block 
- w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border 
- focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+ w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border 
+ focus:border-ucl-highlight focus:ring-ucl-highlight bg-ucl-dark text-ucl-text">
           
                        </div>
                                 <div>
          
                      
-        <label class="block text-sm font-medium text-pl-text">Tournament Start Date</label>
+        <label class="block text-sm font-medium text-ucl-text">Tournament Start Date</label>
   
                                    <input type="date" id="start-date" required
                            
-              class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border 
- focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+              class="mt-1 block w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border 
+ focus:border-ucl-highlight focus:ring-ucl-highlight bg-ucl-dark text-ucl-text">
           
                        </div>
                                 <div id="matches-per-day-container">
              
                        
-  <label class="block text-sm font-medium text-pl-text">Matches Per Team 
+  <label class="block text-sm font-medium text-ucl-text">Matches Per Team 
  Per Day</label>
                                     <input type="number" id="matches-per-day" required value="1" min="1"
                            
-              class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+              class="mt-1 block w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border focus:border-ucl-highlight focus:ring-ucl-highlight bg-ucl-dark text-ucl-text">
      
  
                                  </div>
                             </div>
 
              
-                <label class="block text-sm font-medium text-pl-text pt-2">Team & Player Assignment (Team name : 
+                <label class="block text-sm font-medium text-ucl-text pt-2">Team & Player Assignment (Team name : 
  Player Name)</label>
     
                          <textarea id="teams-and-players" rows="16" required
-                                class="mt-1 block w-full rounded-md border-pl-highlight/50 shadow-sm p-3 border 
-focus:border-pl-highlight focus:ring-pl-highlight bg-pl-dark text-pl-text">
+                                class="mt-1 block w-full rounded-md border-ucl-highlight/50 shadow-sm p-3 border 
+focus:border-ucl-highlight focus:ring-ucl-highlight bg-ucl-dark text-ucl-text">
 Manchester United : @~Sonofsardar
 Manchester City : @~Sayed Maroof Shah
 Liverpool : @~Asad Ullah
@@ -309,26 +311,26 @@ Brentford : @asim
                             
  <button type="submit"
   
-                               class="w-full px-4 py-3 bg-pl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-pl-highlight/80 transition duration-150 flex items-center justify-center">
+                               class="w-full px-4 py-3 bg-ucl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-ucl-highlight/80 transition duration-150 flex items-center justify-center">
                       
            <i class="ph-bold ph-calendar-plus text-xl mr-2"></i> GENERATE FIXTURES & START
             
       
             </button>
-                            <div id="start-message" class="text-sm mt-2 text-center text-pl-highlight"></div>
+                            <div id="start-message" class="text-sm mt-2 text-center text-ucl-highlight"></div>
                     
      </form>
                     </div>
 
      
         
-         <div class="bg-pl-card p-6 rounded-xl shadow-md">
+         <div class="bg-ucl-card p-6 rounded-xl shadow-md">
                         <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg mb-4">Upload Match Results</h3>
                    
          <div id="admin-results-content">
                   
            <div class="text-center py-6 
- text-pl-text">
+ text-ucl-text">
                                 Select an active tournament above to load results panel.
  </div>
                         </div>
@@ -339,16 +341,16 @@ Brentford : @asim
             <div id="fixtures" class="tab-pane space-y-6">
              
  
-    <div class="bg-pl-card p-6 rounded-xl shadow-md">
+    <div class="bg-ucl-card p-6 rounded-xl shadow-md">
                     <h2 id="fixtures-header" class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
-                        <i class="ph-bold ph-calendar-check text-2xl mr-2 text-pl-highlight"></i> Ongoing Matchday Fixtures
+                        <i class="ph-bold ph-calendar-check text-2xl mr-2 text-ucl-highlight"></i> Ongoing Matchday Fixtures
                     </h2>
           
-                    <div id="group-tabs-container" class="mb-4 hidden bg-pl-header-bar p-1 rounded-xl">
+                    <div id="group-tabs-container" class="mb-4 hidden bg-ucl-header-bar p-1 rounded-xl">
                         </div>
 
                     <div id="fixtures-content">
-                        <div class="text-center py-6 text-pl-text">
+                        <div class="text-center py-6 text-ucl-text">
                             Tournament fixtures will appear here once the schedule is generated.
  </div>
                     </div>
@@ -356,16 +358,16 @@ Brentford : @asim
             </div>
 
             <div id="points" class="tab-pane space-y-6 hidden">
-                <div class="bg-pl-card p-6 rounded-xl shadow-md">
+                <div class="bg-ucl-card p-6 rounded-xl shadow-md">
                 
  
      <h2 id="points-header" class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
-                        <i class="ph-bold ph-list-numbers text-2xl mr-2 text-pl-highlight"></i> Official Points Table
+                        <i class="ph-bold ph-list-numbers text-2xl mr-2 text-ucl-highlight"></i> Official Points Table
                     </h2>
                     <div id="points-table-content" class="overflow-x-auto">
            
    
-           <div class="text-center py-6 text-pl-text">
+           <div class="text-center py-6 text-ucl-text">
                             Upload results in the Admin tab to populate the points table.
  </div>
                     </div>
@@ -373,30 +375,30 @@ Brentford : @asim
             </div>
 
             <div id="stats" class="tab-pane space-y-6 hidden">
-                <div class="bg-pl-card p-6 rounded-xl shadow-md">
+                <div class="bg-ucl-card p-6 rounded-xl shadow-md">
                 
  
      <h2 class="text-2xl font-semibold text-white section-header-bg p-3 rounded-lg flex items-center mb-4">
-                        <i class="ph-bold ph-chart-line text-2xl mr-2 text-pl-highlight"></i> League Statistics
+                        <i class="ph-bold ph-chart-line text-2xl mr-2 text-ucl-highlight"></i> League Statistics
                     </h2>
                     <div id="stats-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           
   
-             <div id="top-scorers" class="bg-pl-dark p-4 rounded-lg shadow-inner">
+             <div id="top-scorers" class="bg-ucl-dark p-4 rounded-lg shadow-inner">
                             <h4 class="font-bold text-white section-header-bg p-2 rounded-lg mb-3">Top Goalscorers (GF)</h4>
-                            <ul id="scorers-list" class="space-y-1 text-pl-text"></ul>
+                            <ul id="scorers-list" class="space-y-1 text-ucl-text"></ul>
               
   
         </div>
-                        <div id="top-defense" class="bg-pl-dark p-4 rounded-lg shadow-inner">
+                        <div id="top-defense" class="bg-ucl-dark p-4 rounded-lg shadow-inner">
                             <h4 class="font-bold text-white section-header-bg p-2 rounded-lg mb-3">Best Defense (GA)</h4>
                           
  
    <ul 
- id="defense-list" class="space-y-1 text-pl-text"></ul>
+ id="defense-list" class="space-y-1 text-ucl-text"></ul>
                         </div>
                     </div>
-                    <div id="stats-misc" class="text-center pt-6 text-sm text-pl-text/70"></div>
+                    <div id="stats-misc" class="text-center pt-6 text-sm text-ucl-text/70"></div>
                 </div>
         
   
@@ -477,7 +479,7 @@ Brentford : @asim
             const el = document.getElementById(elementId);
             if (!el) return;
             el.textContent = message;
-            el.className = `text-sm mt-2 text-center ${isError ? 'text-pl-highlight' : 'text-green-500'}`;
+            el.className = `text-sm mt-2 text-center ${isError ? 'text-ucl-highlight' : 'text-green-500'}`;
             setTimeout(() => el.textContent = '', 5000);
         };
         
@@ -559,7 +561,7 @@ Brentford : @asim
                 
                 // Reset classes
         
-         btn.classList.remove('bg-pl-accent', 'border-pl-highlight', 'text-pl-highlight', 'text-white', 'border-transparent');
+         btn.classList.remove('bg-ucl-accent', 'border-pl-highlight', 'text-pl-highlight', 'text-white', 'border-transparent');
         
          btn.classList.add('border-2');
 
@@ -600,7 +602,7 @@ Brentford : @asim
                 isAdmin = true;
                 document.getElementById('admin-auth-panel').classList.add('hidden');
                 document.getElementById('admin-panel').classList.remove('hidden');
-                document.getElementById('user-icon').classList.replace('text-pl-text', 'text-pl-highlight');
+                document.getElementById('user-icon').classList.replace('text-ucl-text', 'text-ucl-highlight');
                 document.getElementById('user-display').textContent = `Admin User`;
                 showMessage('admin-auth-message', 'Admin access granted!', false);
                 // Call render functions immediately after login
@@ -1016,10 +1018,10 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                     // Small visual feedback on the button
                     const btn = form.querySelector('button[type="submit"]');
                     btn.innerHTML = `<i class="ph-bold ph-check text-lg"></i>`;
-                    btn.classList.replace('bg-pl-highlight', 'bg-green-600');
+                    btn.classList.replace('bg-ucl-highlight', 'bg-green-600');
                     setTimeout(() => {
                         btn.innerHTML = `<i class="ph-bold ph-floppy-disk text-lg"></i>`;
-                        btn.classList.replace('bg-green-600', 'bg-pl-highlight');
+                        btn.classList.replace('bg-green-600', 'bg-ucl-highlight');
                     }, 1000);
                 } else {
                     throw "Match ID not found in schedule.";
@@ -1228,13 +1230,13 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             const container = document.getElementById('current-tournament-status');
             if (!tournament) {
                 container.innerHTML = `
-                    <div class="p-4 bg-pl-card border-l-4 border-pl-highlight text-pl-text">
+                    <div class="p-4 bg-ucl-card border-l-4 border-ucl-highlight text-ucl-text">
                         <p class="font-bold">No Active Tournament</p>
                         <p class="text-sm">Use the 'Start New Tournament' section below to create a schedule.</p>
                     </div>
                 `;
                 // Also ensure the results content is reset if no tournament is active
-                document.getElementById('admin-results-content').innerHTML = '<div class="text-center py-6 text-pl-text">Generate a schedule above to start uploading results.</div>';
+                document.getElementById('admin-results-content').innerHTML = '<div class="text-center py-6 text-ucl-text">Generate a schedule above to start uploading results.</div>';
                 return;
             }
 
@@ -1251,20 +1253,20 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             const estimatedEndDate = uniqueDates.length > 0 ? uniqueDates[uniqueDates.length - 1] : 'N/A';
 
             container.innerHTML = `
-                <div class="p-4 bg-pl-dark rounded-md border border-pl-highlight/30 space-y-2">
-                    <p class="text-sm font-semibold text-pl-text">Type: <span class="text-pl-highlight">${tournament.type === 'league' ? 'League' : 'Group & Knockout'}</span></p>
-                    <p class="text-sm font-semibold text-pl-text">Teams: <span class="text-pl-highlight">${tournament.teams.length}</span></p>
-                    <p class="text-sm font-semibold text-pl-text">Total Matches: <span class="text-pl-highlight">${totalMatches}</span></p>
-                    <p class="text-sm font-semibold text-pl-text">Matches Played: <span class="text-pl-highlight">${matchesPlayed}</span></p>
-                    <p class="text-sm font-semibold text-pl-text">Current Leader: <span class="text-pl-highlight">${firstPlace}</span></p>
-                    <p class="text-sm font-semibold text-pl-text">End Date: <span class="text-pl-highlight">${estimatedEndDate}</span></p>
+                <div class="p-4 bg-ucl-dark rounded-md border border-ucl-highlight/30 space-y-2">
+                    <p class="text-sm font-semibold text-ucl-text">Type: <span class="text-ucl-highlight">${tournament.type === 'league' ? 'League' : 'Group & Knockout'}</span></p>
+                    <p class="text-sm font-semibold text-ucl-text">Teams: <span class="text-ucl-highlight">${tournament.teams.length}</span></p>
+                    <p class="text-sm font-semibold text-ucl-text">Total Matches: <span class="text-ucl-highlight">${totalMatches}</span></p>
+                    <p class="text-sm font-semibold text-ucl-text">Matches Played: <span class="text-ucl-highlight">${matchesPlayed}</span></p>
+                    <p class="text-sm font-semibold text-ucl-text">Current Leader: <span class="text-ucl-highlight">${firstPlace}</span></p>
+                    <p class="text-sm font-semibold text-ucl-text">End Date: <span class="text-ucl-highlight">${estimatedEndDate}</span></p>
                 </div>
-                <div class="w-full bg-pl-card rounded-full h-2.5 mt-4">
-                    <div class="bg-pl-highlight h-2.5 rounded-full" style="width: ${progress}%"></div>
-                    <p class="text-xs text-pl-text/70 text-center mt-1">${progress}% Complete</p>
+                <div class="w-full bg-ucl-card rounded-full h-2.5 mt-4">
+                    <div class="bg-ucl-highlight h-2.5 rounded-full" style="width: ${progress}%"></div>
+                    <p class="text-xs text-ucl-text/70 text-center mt-1">${progress}% Complete</p>
                 </div>
                 <div class="flex justify-center mt-4">
-                    <button id="delete-tournament-btn" class="px-4 py-2 bg-pl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-pl-highlight/80 transition duration-150 flex items-center">
+                    <button id="delete-tournament-btn" class="px-4 py-2 bg-ucl-highlight text-white font-semibold rounded-lg shadow-md hover:bg-ucl-highlight/80 transition duration-150 flex items-center">
                         <i class="ph-bold ph-trash-simple text-lg mr-2"></i> Delete Tournament
                     </button>
                 </div>
@@ -1278,7 +1280,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
         const renderAdminResultsContent = (tournament) => {
             const container = document.getElementById('admin-results-content');
             if (!isAdmin || !tournament || !tournament.schedule) {
-                container.innerHTML = '<div class="text-center py-6 text-pl-text">Generate a schedule above to start uploading results.</div>';
+                container.innerHTML = '<div class="text-center py-6 text-ucl-text">Generate a schedule above to start uploading results.</div>';
                 return;
             }
             const scheduleData = tournament.schedule;
@@ -1291,27 +1293,27 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                     (round.matches[0].group || 'Knockout Stage') : (round.matches[0].group ? 'Group Stage' : 'League Round');
                 
                 html += `
-                    <div class="bg-pl-dark p-3 rounded-lg mt-4 shadow-inner">
-                        <h4 class="text-md font-bold text-pl-highlight mb-3">Matchday ${round.round} (${round.date}) - ${roundType}</h4>
+                    <div class="bg-ucl-dark p-3 rounded-lg mt-4 shadow-inner">
+                        <h4 class="text-md font-bold text-ucl-highlight mb-3">Matchday ${round.round} (${round.date}) - ${roundType}</h4>
                         <div class="space-y-2">
                 `;
                 
                 round.matches.forEach(match => {
                     const homeScore = match.homeScore === null ? '' : match.homeScore;
                     const awayScore = match.awayScore === null ? '' : match.awayScore;
-                    const matchGroup = match.group && !match.knockout ? `<span class="text-pl-highlight/70 text-xs ml-1">(${match.group})</span>` : '';
+                    const matchGroup = match.group && !match.knockout ? `<span class="text-ucl-highlight/70 text-xs ml-1">(${match.group})</span>` : '';
                     const homePlayerName = getPlayerName(match.home, players); // MODIFIED
                     const awayPlayerName = getPlayerName(match.away, players); // MODIFIED
 
                     html += `
-                        <form data-match-id="${match.id}" class="match-update-form flex items-center space-x-2 bg-pl-card p-2 rounded-md border border-pl-highlight/30">
-                            <div class="font-semibold text-pl-text w-1/3 truncate flex items-center">${match.home}${homePlayerName} ${matchGroup}</div>
-                            <input type="number" min="0" value="${homeScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-home focus:border-pl-highlight bg-pl-dark text-pl-text">
-                            <span class="font-bold text-pl-highlight">-</span>
-                            <input type="number" min="0" value="${awayScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-away focus:border-pl-highlight bg-pl-dark text-pl-text">
-                            <div class="font-semibold text-pl-text w-1/3 text-right truncate">${match.away}${awayPlayerName}</div>
-                            <button type="submit" class="p-1 bg-pl-highlight text-white rounded-md text-sm 
-                                hover:bg-pl-highlight/80 transition duration-150 flex items-center justify-center">
+                        <form data-match-id="${match.id}" class="match-update-form flex items-center space-x-2 bg-ucl-card p-2 rounded-md border border-ucl-highlight/30">
+                            <div class="font-semibold text-ucl-text w-1/3 truncate flex items-center">${match.home}${homePlayerName} ${matchGroup}</div>
+                            <input type="number" min="0" value="${homeScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-home focus:border-ucl-highlight bg-ucl-dark text-ucl-text">
+                            <span class="font-bold text-ucl-highlight">-</span>
+                            <input type="number" min="0" value="${awayScore}" placeholder="0" class="w-12 p-1 text-center border rounded score-input-away focus:border-ucl-highlight bg-ucl-dark text-ucl-text">
+                            <div class="font-semibold text-ucl-text w-1/3 text-right truncate">${match.away}${awayPlayerName}</div>
+                            <button type="submit" class="p-1 bg-ucl-highlight text-white rounded-md text-sm 
+                                hover:bg-ucl-highlight/80 transition duration-150 flex items-center justify-center">
                                 <i class="ph-bold ph-floppy-disk text-lg"></i>
                             </button>
                         </form>
@@ -1348,7 +1350,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             );
             
             if (groupSchedule.length === 0) {
-                return `<div class="text-center py-6 text-pl-text">No group stage matches generated for ${groupName} yet.</div>`;
+                return `<div class="text-center py-6 text-ucl-text">No group stage matches generated for ${groupName} yet.</div>`;
             }
 
             let html = '';
@@ -1359,24 +1361,24 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                 if (matchesInRound.length === 0) return; // Skip if no matches for this group in this round
 
                 html += `
-                    <div class="bg-pl-dark p-4 rounded-lg mt-4 shadow-inner">
-                        <h4 class="text-lg font-bold text-pl-highlight mb-3">Matchday ${round.round} (${round.date}) - ${groupName}</h4>
+                    <div class="bg-ucl-dark p-4 rounded-lg mt-4 shadow-inner">
+                        <h4 class="text-lg font-bold text-ucl-highlight mb-3">Matchday ${round.round} (${round.date}) - ${groupName}</h4>
                         <div class="space-y-2">
                 `;
                 
                 matchesInRound.forEach(match => {
                     const homePlayerName = getPlayerName(match.home, players);
                     const awayPlayerName = getPlayerName(match.away, players);
-                    const scoreDisplay = match.homeScore !== null ? `<span class="font-bold text-white">${match.homeScore} - ${match.awayScore}</span>` : '<span class="text-pl-text/50 italic">vs</span>';
+                    const scoreDisplay = match.homeScore !== null ? `<span class="font-bold text-white">${match.homeScore} - ${match.awayScore}</span>` : '<span class="text-ucl-text/50 italic">vs</span>';
                     const homeLogo = getTeamLogoHtml(match.home, 'w-6 h-6');
                     const awayLogo = getTeamLogoHtml(match.away, 'w-6 h-6');
-                    const matchStyle = 'bg-pl-card';
+                    const matchStyle = 'bg-ucl-card';
 
                     html += `
-                        <div class="flex justify-between items-center ${matchStyle} p-3 rounded-md shadow-sm border border-pl-highlight/30">
-                            <div class="font-semibold text-pl-text w-1/3 flex items-center truncate">${homeLogo} ${match.home}${homePlayerName}</div>
+                        <div class="flex justify-between items-center ${matchStyle} p-3 rounded-md shadow-sm border border-ucl-highlight/30">
+                            <div class="font-semibold text-ucl-text w-1/3 flex items-center truncate">${homeLogo} ${match.home}${homePlayerName}</div>
                             <div class="w-1/3 text-center">${scoreDisplay}</div>
-                            <div class="font-semibold text-pl-text w-1/3 text-right flex items-center justify-end truncate">${match.away}${awayPlayerName} ${awayLogo}</div>
+                            <div class="font-semibold text-ucl-text w-1/3 text-right flex items-center justify-end truncate">${match.away}${awayPlayerName} ${awayLogo}</div>
                         </div>
                     `;
                 });
@@ -1408,7 +1410,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                 const roundHeaderClass = 'text-green-500';
 
                 html += `
-                    <div class="bg-pl-dark p-4 rounded-lg mt-4 shadow-inner ${roundClass}">
+                    <div class="bg-ucl-dark p-4 rounded-lg mt-4 shadow-inner ${roundClass}">
                         <h4 class="text-lg font-bold ${roundHeaderClass} mb-3">Matchday ${round.round} (${round.date}) - ${roundType}</h4>
                         <div class="space-y-2">
                 `;
@@ -1416,16 +1418,16 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                 round.matches.forEach(match => {
                     const homePlayerName = getPlayerName(match.home, players);
                     const awayPlayerName = getPlayerName(match.away, players);
-                    const scoreDisplay = match.homeScore !== null ? `<span class="font-bold text-white">${match.homeScore} - ${match.awayScore}</span>` : '<span class="text-pl-text/50 italic">vs</span>';
+                    const scoreDisplay = match.homeScore !== null ? `<span class="font-bold text-white">${match.homeScore} - ${match.awayScore}</span>` : '<span class="text-ucl-text/50 italic">vs</span>';
                     const homeLogo = getTeamLogoHtml(match.home, 'w-6 h-6');
                     const awayLogo = getTeamLogoHtml(match.away, 'w-6 h-6');
-                    const matchStyle = 'bg-pl-accent/40';
+                    const matchStyle = 'bg-ucl-accent/40';
 
                     html += `
                         <div class="flex justify-between items-center ${matchStyle} p-3 rounded-md shadow-sm border border-green-500/50">
-                            <div class="font-semibold text-pl-text w-1/3 flex items-center truncate">${homeLogo} ${match.home}${homePlayerName}</div>
+                            <div class="font-semibold text-ucl-text w-1/3 flex items-center truncate">${homeLogo} ${match.home}${homePlayerName}</div>
                             <div class="w-1/3 text-center">${scoreDisplay}</div>
-                            <div class="font-semibold text-pl-text w-1/3 text-right flex items-center justify-end truncate">${match.away}${awayPlayerName} ${awayLogo}</div>
+                            <div class="font-semibold text-ucl-text w-1/3 text-right flex items-center justify-end truncate">${match.away}${awayPlayerName} ${awayLogo}</div>
                         </div>
                     `;
                 });
@@ -1442,39 +1444,39 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             const fixturesHeader = document.getElementById('fixtures-header');
             
             if (!tournament || !tournament.schedule) {
-                container.innerHTML = '<div class="text-center py-6 text-pl-text">Tournament fixtures will appear here once the schedule is generated.</div>';
+                container.innerHTML = '<div class="text-center py-6 text-ucl-text">Tournament fixtures will appear here once the schedule is generated.</div>';
                 tabContainer.classList.add('hidden');
-                fixturesHeader.innerHTML = '<i class="ph-bold ph-calendar-check text-2xl mr-2 text-pl-highlight"></i> Ongoing Matchday Fixtures';
+                fixturesHeader.innerHTML = '<i class="ph-bold ph-calendar-check text-2xl mr-2 text-ucl-highlight"></i> Ongoing Matchday Fixtures';
                 return;
             }
 
             if (tournament.type === 'league') {
                 // --- LEAGUE RENDER LOGIC ---
                 tabContainer.classList.add('hidden');
-                fixturesHeader.innerHTML = '<i class="ph-bold ph-calendar-check text-2xl mr-2 text-pl-highlight"></i> League Fixtures';
+                fixturesHeader.innerHTML = '<i class="ph-bold ph-calendar-check text-2xl mr-2 text-ucl-highlight"></i> League Fixtures';
                 
                 const players = tournament.players || {};
                 let html = '';
                 
                 tournament.schedule.forEach(round => {
                     html += `
-                        <div class="bg-pl-dark p-4 rounded-lg mt-4 shadow-inner">
-                            <h4 class="text-lg font-bold text-pl-highlight mb-3">Matchday ${round.round} (${round.date}) - League Round</h4>
+                        <div class="bg-ucl-dark p-4 rounded-lg mt-4 shadow-inner">
+                            <h4 class="text-lg font-bold text-ucl-highlight mb-3">Matchday ${round.round} (${round.date}) - League Round</h4>
                             <div class="space-y-2">
                     `;
                     
                     round.matches.forEach(match => {
                         const homePlayerName = getPlayerName(match.home, players);
                         const awayPlayerName = getPlayerName(match.away, players);
-                        const scoreDisplay = match.homeScore !== null ? `<span class="font-bold text-white">${match.homeScore} - ${match.awayScore}</span>` : '<span class="text-pl-text/50 italic">vs</span>';
+                        const scoreDisplay = match.homeScore !== null ? `<span class="font-bold text-white">${match.homeScore} - ${match.awayScore}</span>` : '<span class="text-ucl-text/50 italic">vs</span>';
                         const homeLogo = getTeamLogoHtml(match.home, 'w-6 h-6');
                         const awayLogo = getTeamLogoHtml(match.away, 'w-6 h-6');
 
                         html += `
-                            <div class="flex justify-between items-center bg-pl-card p-3 rounded-md shadow-sm border border-pl-highlight/30">
-                                <div class="font-semibold text-pl-text w-1/3 flex items-center truncate">${homeLogo} ${match.home}${homePlayerName}</div>
+                            <div class="flex justify-between items-center bg-ucl-card p-3 rounded-md shadow-sm border border-ucl-highlight/30">
+                                <div class="font-semibold text-ucl-text w-1/3 flex items-center truncate">${homeLogo} ${match.home}${homePlayerName}</div>
                                 <div class="w-1/3 text-center">${scoreDisplay}</div>
-                                <div class="font-semibold text-pl-text w-1/3 text-right flex items-center justify-end truncate">${match.away}${awayPlayerName} ${awayLogo}</div>
+                                <div class="font-semibold text-ucl-text w-1/3 text-right flex items-center justify-end truncate">${match.away}${awayPlayerName} ${awayLogo}</div>
                             </div>
                         `;
                     });
@@ -1486,7 +1488,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             } else if (tournament.type === 'group_knockout' && tournament.groups) {
                 // --- GROUP & KNOCKOUT RENDER LOGIC ---
                 tabContainer.classList.remove('hidden');
-                fixturesHeader.innerHTML = '<i class="ph-bold ph-calendar-check text-2xl mr-2 text-pl-highlight"></i> Tournament Fixtures';
+                fixturesHeader.innerHTML = '<i class="ph-bold ph-calendar-check text-2xl mr-2 text-ucl-highlight"></i> Tournament Fixtures';
                 
                 const groups = Object.keys(tournament.groups).sort();
                 
@@ -1501,8 +1503,8 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                 groups.forEach(groupName => {
                     const isActive = groupName === activeGroup;
                     const tabClass = isActive ? 
-                        'bg-pl-highlight text-white border-pl-highlight' : 
-                        'bg-pl-dark/50 text-pl-text border-transparent hover:bg-pl-dark';
+                        'bg-ucl-highlight text-white border-ucl-highlight' : 
+                        'bg-ucl-dark/50 text-ucl-text border-transparent hover:bg-ucl-dark';
 
                     tabsHtml += `
                         <div data-group="${groupName}" class="group-tab-button flex-1 py-2 px-4 rounded-lg text-sm font-semibold border-2 ${tabClass} transition duration-150 cursor-pointer text-center min-w-[70px] sm:min-w-0 mx-0.5">
@@ -1522,7 +1524,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                 // 2. Render Fixtures (Group Stage for active group + Knockout)
                 let fixturesHtml = `
                     <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg flex items-center mb-4 mt-6">
-                        <i class="ph-bold ph-users-three text-2xl mr-2 text-pl-highlight"></i> ${activeGroup} Group Stage Fixtures
+                        <i class="ph-bold ph-users-three text-2xl mr-2 text-ucl-highlight"></i> ${activeGroup} Group Stage Fixtures
                     </h3>
                     ${renderGroupStageFixtures(tournament, activeGroup)}
                     ${renderKnockoutFixtures(tournament)}
@@ -1531,7 +1533,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
 
             } else {
                  // Fallback
-                 container.innerHTML = '<div class="text-center py-6 text-pl-text">Tournament fixtures will appear here once the schedule is generated.</div>';
+                 container.innerHTML = '<div class="text-center py-6 text-ucl-text">Tournament fixtures will appear here once the schedule is generated.</div>';
                  tabContainer.classList.add('hidden');
             }
         };
@@ -1542,20 +1544,20 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             const header = document.getElementById('points-header');
 
             if (standingsResult.overall.length === 0) {
-                container.innerHTML = '<div class="text-center py-6 text-pl-text">Upload results in the Admin tab to populate the points table.</div>';
-                header.innerHTML = '<i class="ph-bold ph-list-numbers text-2xl mr-2 text-pl-highlight"></i> Official Points Table';
+                container.innerHTML = '<div class="text-center py-6 text-ucl-text">Upload results in the Admin tab to populate the points table.</div>';
+                header.innerHTML = '<i class="ph-bold ph-list-numbers text-2xl mr-2 text-ucl-highlight"></i> Official Points Table';
                 return;
             }
 
             // MODIFIED: Header for points table
-            header.innerHTML = `<i class="ph-bold ph-list-numbers text-2xl mr-2 text-pl-highlight"></i> ${tournamentType === 'league' ? 'League Standings' : 'Group Stage Standings'}`;
+            header.innerHTML = `<i class="ph-bold ph-list-numbers text-2xl mr-2 text-ucl-highlight"></i> ${tournamentType === 'league' ? 'League Standings' : 'Group Stage Standings'}`;
 
             const renderTable = (standings, showGroup = false) => {
                 // Determine the rank threshold for highlighting (Top 4 for league, top 2 per group for KO stage)
                 const rankHighlightLimit = tournamentType === 'group_knockout' ? 2 : 4;
                 const tableHeader = `
-                    <table class="min-w-full divide-y divide-pl-highlight/30 shadow overflow-hidden sm:rounded-lg">
-                        <thead class="bg-pl-header-bar">
+                    <table class="min-w-full divide-y divide-ucl-highlight/30 shadow overflow-hidden sm:rounded-lg">
+                        <thead class="bg-ucl-header-bar">
                             <tr>
                                 <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">#</th>
                                 <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Team</th>
@@ -1568,7 +1570,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                                 <th scope="col" class="px-3 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">Pts</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-pl-card divide-y divide-pl-highlight/20">
+                        <tbody class="bg-ucl-card divide-y divide-ucl-highlight/20">
                 `;
 
                 const rows = standings.map((team, index) => {
@@ -1580,18 +1582,18 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
 
                     return `
                         <tr class="${rowBg}">
-                            <td class="px-3 py-4 whitespace-nowrap text-sm font-bold text-center text-pl-highlight">${rank}</td>
-                            <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-pl-text flex items-center">
+                            <td class="px-3 py-4 whitespace-nowrap text-sm font-bold text-center text-ucl-highlight">${rank}</td>
+                            <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-ucl-text flex items-center">
                                 ${logoHtml} ${team.team} <span class="text-white text-xs opacity-80 ml-2 block sm:inline">(${playerName})</span>
                             </td>
-                            ${showGroup ? `<td class="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-pl-highlight">${team.group}</td>` : ''}
+                            ${showGroup ? `<td class="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-ucl-highlight">${team.group}</td>` : ''}
                             <td class="px-3 py-4 whitespace-nowrap text-sm text-center">${team.P}</td>
                             <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden sm:table-cell">${team.W}</td>
                             <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden sm:table-cell">${team.D}</td>
                             <td class="px-3 py-4 whitespace-nowrap text-sm text-center hidden sm:table-cell">${team.L}</td>
-                            <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-pl-highlight">${team.GD > 0 ?
+                            <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-ucl-highlight">${team.GD > 0 ?
                                 '+' : ''}${team.GD}</td>
-                            <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-extrabold text-pl-highlight">${team.Pts}</td>
+                            <td class="px-3 py-4 whitespace-nowrap text-sm text-center font-extrabold text-ucl-highlight">${team.Pts}</td>
                         </tr>
                     `;
                 });
@@ -1605,7 +1607,7 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
                 for (const groupName in standingsResult.byGroup) {
                     html += `
                         <h3 class="text-xl font-bold text-white section-header-bg p-3 rounded-lg flex items-center mb-4 mt-6">
-                            <i class="ph-bold ph-users-three text-xl mr-2 text-pl-highlight"></i> ${groupName} Standings
+                            <i class="ph-bold ph-users-three text-xl mr-2 text-ucl-highlight"></i> ${groupName} Standings
                         </h3>
                         ${renderTable(standingsResult.byGroup[groupName], false)}
                     `;
@@ -1625,8 +1627,8 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             defenseList.innerHTML = '';
 
             if (standingsResult.overall.length === 0) {
-                scorersList.innerHTML = '<li class="text-pl-text/70 text-center py-2">No match results available.</li>';
-                defenseList.innerHTML = '<li class="text-pl-text/70 text-center py-2">No match results available.</li>';
+                scorersList.innerHTML = '<li class="text-ucl-text/70 text-center py-2">No match results available.</li>';
+                defenseList.innerHTML = '<li class="text-ucl-text/70 text-center py-2">No match results available.</li>';
                 statsMisc.textContent = '';
                 return;
             }
@@ -1638,10 +1640,10 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             topScorers.forEach((team, index) => {
                 const playerName = players[team.team] || '';
                 scorersList.innerHTML += `
-                    <li class="flex justify-between items-center py-1 border-b border-pl-highlight/10">
-                        <span class="font-bold text-pl-highlight mr-2">${index + 1}.</span>
-                        <span class="flex-1 truncate">${team.team} <span class="text-pl-text/50 text-xs">(${playerName})</span></span>
-                        <span class="font-bold text-pl-highlight">${team.GF} GF</span>
+                    <li class="flex justify-between items-center py-1 border-b border-ucl-highlight/10">
+                        <span class="font-bold text-ucl-highlight mr-2">${index + 1}.</span>
+                        <span class="flex-1 truncate">${team.team} <span class="text-ucl-text/50 text-xs">(${playerName})</span></span>
+                        <span class="font-bold text-ucl-highlight">${team.GF} GF</span>
                     </li>
                 `;
             });
@@ -1656,10 +1658,10 @@ if (teamsCount % groupsCount !== 0 || (groupsCount > 1 && groupsCount % 2 !== 0)
             bestDefense.forEach((team, index) => {
                 const playerName = players[team.team] || '';
                 defenseList.innerHTML += `
-                    <li class="flex justify-between items-center py-1 border-b border-pl-highlight/10">
-                        <span class="font-bold text-pl-highlight mr-2">${index + 1}.</span>
-                        <span class="flex-1 truncate">${team.team} <span class="text-pl-text/50 text-xs">(${playerName})</span></span>
-                        <span class="font-bold text-pl-highlight">${team.GA} GA</span>
+                    <li class="flex justify-between items-center py-1 border-b border-ucl-highlight/10">
+                        <span class="font-bold text-ucl-highlight mr-2">${index + 1}.</span>
+                        <span class="flex-1 truncate">${team.team} <span class="text-ucl-text/50 text-xs">(${playerName})</span></span>
+                        <span class="font-bold text-ucl-highlight">${team.GA} GA</span>
                     </li>
                 `;
             });
