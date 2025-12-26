@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,16 +60,47 @@
             background: linear-gradient(135deg, #0a1a3a 0%, #1e2b4d 100%);
             min-height: 100vh;
         }
+     .glass-effect {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px rgba(0, 86, 179, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
         
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-        }
+    /* Replace current gradients with UCL-style */
+.gradient-bg {
+    background: linear-gradient(135deg, 
+        #0056b3 0%,      /* Deep UCL blue */
+        #007bff 25%,     /* Bright blue */
+        #00aeff 50%,     /* Cyan accent */
+        #0056b3 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add shiny effect */
+.gradient-bg::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    transform: rotate(30deg);
+}
         
         .section-header {
             background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
@@ -86,10 +118,17 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1));
         }
         
-        .match-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
+         .fixtures-container {
+    min-width: 1200px; /* Wider container */
+    overflow-x: auto;
+}
+
+.match-card {
+    min-width: 400px; /* Wider match cards */
+    padding: 1.5rem;
+}
+
+/* Team name and logo alignment fixes */
         
         .match-card:hover {
             transform: translateY(-2px);
